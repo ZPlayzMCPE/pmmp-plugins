@@ -15,15 +15,17 @@
 ## Download
 Follow the steps below to download any plugin:
 ### Step 1.
-###### Visit this [link](https://kenygamer.herokuapp.com/download-plugin.php) to download the ZIP file of the plugin.
+Navigate to [here](https://kenygamer.herokuapp.com/download-plugin.php) to download the plugin in ZIP format.
 ### Step 2.
-###### Upload the downloaded file to [pmt.mcpe.fun](https://pmt.mcpe.fun/pages/zip2phar) to convert the ZIP to a PHAR file.
+Create an executable PHAR file in [PocketMine Tools](https://pmt.mcpe.fun/pages/zip2phar) by uploading the previously downloaded file.
 ### Step 3.
-###### Upload the previously downloaded PHAR file to your server, in the *plugins/* folder.
+Upload the plugin to the *plugins/* folder on your server.
 ### Step 4.
-###### Restart your server and you're all set!
+Restart your server and you're ready!
 
-## Notes
-Some of the plugins in this repository may not be compatible with your PocketMine installation. Most of the time it is because of API changes, and commonly users make API bumps, which is not recommended and will not guarantee their partial or total support. Most likely we as contributors have to make changes to the code that involve the loss of features exceptionally. 
+## Issues
+Did you find a bug or issue running a plugin on your server? No problem! Here's what to do:
+1. Check the [Issue Tracker](https://github.com/kenygamer/pmmp-plugins/issues), in case your issue has already been reported.
+1. If your issue is still valid, submit the issue in the Issue Tracker. Please be sure to provide as much information as you can. This will make the process of reproducing and fixing easier.
 
-Please submit an issue if you have problems running plugins.
+## Upgrading plugins
