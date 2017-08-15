@@ -1,9 +1,9 @@
 [
   {
     "version": "1.0",
-    "features": {
+    "features": [
       "Limit the use of capital letters when talking in the public chat.",
       "Disable this chat rule by assigning the capslimiter.bypass permission."
-    }
+      ]
   }
 ]
