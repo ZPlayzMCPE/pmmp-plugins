@@ -1,6 +1,6 @@
 name: CapsLimiter
 main: kenygamer\CapsLimiter\Main
-version: 1.0.2
+version: 1.2
 api: 3.0.0-ALPHA7
 
 author: kenygamer
