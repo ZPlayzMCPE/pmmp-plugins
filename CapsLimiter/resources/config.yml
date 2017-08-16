@@ -1,0 +1,6 @@
+# Config file for CapsLimiter by Kevin Andrews;
+
+# Settings:
+
+# Maximum capital letters per message
+max-caps: 3
