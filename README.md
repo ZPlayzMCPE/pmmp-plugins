@@ -17,7 +17,7 @@ Follow the steps below to download any plugin:
 ### Step 1.
 Navigate to [here](https://kenygamer.herokuapp.com/download-plugin.php) to download the plugin in ZIP format.
 ### Step 2.
-Create an executable PHAR file in [PocketMine Tools](https://pmt.mcpe.fun/pages/zip2phar) by uploading the previously downloaded file.
+Create an executable PHAR file in [PocketMine Tools](https://pmt.mcpe.fun/pages/zip2phar/) by uploading the previously downloaded file.
 ### Step 3.
 Upload the plugin to the *plugins/* folder on your server.
 ### Step 4.
