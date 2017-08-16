@@ -12,4 +12,6 @@
     "release_time": 1502900340,
     "features": [
       "Removed support for PocketMine APIs < 3.0.0-ALPHA7."
+      ]
+  }
 ]
