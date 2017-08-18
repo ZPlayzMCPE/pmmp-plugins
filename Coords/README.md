@@ -15,12 +15,12 @@ Coords is a plugin for PocketMine-MP that allows you to get your coordinates (mu
 
 ## Permissions
 ```yaml
-coords.command:
- default: true
-coords.command.see:
- default: op
-coords.command.tags:
- default: op
-coords.command.update:
- default: op
+ coords.command:
+  default: true
+ coords.command.see:
+  default: op
+ coords.command.tags:
+  default: op
+ coords.command.update:
+  default: op
 ```
