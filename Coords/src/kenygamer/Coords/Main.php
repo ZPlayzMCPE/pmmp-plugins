@@ -17,7 +17,7 @@
 
 namespace kenygamer\Coords;
 
-use pocketmine\command\{Command, CommandSender, CommandExecutor};
+use pocketmine\command\Command;
 use pocketmine\event\Listener;
 use pocketmine\Player;
 use pocketmine\plugin\PluginBase;
@@ -165,10 +165,22 @@ class Main extends PluginBase implements Listener{
           return true;
       }
     }elseif($command->getName() === "coordtags"){
-     if(!$sender->hasPermission("coords.command.tags")){
-       $sender->sendMessage($this->getPrefix().TF::RED." You do not have permission to use the tags command!");
-       return true;
-     }
+      if(!$sender->hasPermission("coords.command.tags")){
+        $sender->sendMessage($this->getPrefix().TF::RED." You do not have permission to use the tags command!");
+      }
+      $sender->sendMessage($this->getPrefix().TF::AQUA." Available tags:\n".TF::GOLD."%X%".TF::WHITE." - Sender's X\n".TF::GOLD."%Y%".TF::WHITE." - Sender's Y\n".TF::GOLD."%Z%".TF::WHITE." - Sender's Z\n".TF::GOLD."%LEVEL%".TF::WHITE." - Sender's world\n".TF::GOLD."%LINE%".TF::WHITE." - Line break");
+      return true;
+    }elseif($command->getName() === "coordupdate"){
+      if(!$sender->hasPermission("coords.command.update")){
+        $sender->sendMessage($this->getPrefix().TF::RED." You do not have permission to use the update command!");
+      }
+      if(empty($message = $args[0])){
+        $sender->sendMessage("Usage: /coordupdate <message>");
+        return true;
+      }
+      file_put_contents($this->getFormatPath(), implode(" ", $message));
+      $sender->sendMessage($this->getPrefix().TF::GREEN." Message successfully updated!");
+      return true;
     }
   }
   
