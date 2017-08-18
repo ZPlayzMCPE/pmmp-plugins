@@ -23,6 +23,8 @@ use pocketmine\Player;
 use pocketmine\plugin\PluginBase;
 use pocketmine\utils\TextFormat as TF;
 
+use kenygamer\Coords\Coordinates;
+
 class Main extends PluginBase implements Listener{
   
   const VERSION = "3.1";
