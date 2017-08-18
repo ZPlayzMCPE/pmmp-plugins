@@ -12,8 +12,6 @@ commands:
 
 permissions:
  capslimiter.command:
-  description: Allows you to use /limit
   default: op
  capslimiter.bypass:
-  description: Allows you to bypass capital letters
   default: false
