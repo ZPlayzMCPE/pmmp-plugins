@@ -119,15 +119,23 @@ class Main extends PluginBase implements Listener{
   public function onCommand(CommandSender $sender, Command $command, string $label, array $args) : bool{
     if($command->getName() === "coords"){
       if(isset($args[0])){
+        if(!$sender->hasPermission("coords.command.see")){
+          $sender->sendMessage($this->getPrefix().TF::RED." You do not have permission to use the see command!");
+          return true;
+        }
         $player = $this->getServer()->getPlayer(strtolower($args[0]));
         if($player instanceof Player){
           $coords = new Coordinates($player);
           $sender->sendMessage($this->getPrefix().TF::AQUA." ".strtolower($args[0])."'s".TF::YELLOW." coordinates:\n".TF::GOLD."X: ".TF::BLUE.$coords[0]."\n".TF::GOLD."Y: ".TF::BLUE.$coords[1]."\n".TF::GOLD."Z: ".TF::BLUE.$coords[2]."\n".TF::GOLD."Level: ".TF::BLUE.$coords[3]);
           return true;
-        } else {
+        }else{
           $sender->sendMessage($this->getPrefix().TF::RED." The requested player is not online!");
           return true;
         }
+      }
+      if(!$sender->hasPermission("coords.command.coords")){
+        $sender->sendMessage($this->getPrefix().TF::RED." You do not have permission to use the coords command!");
+        return true;
       }
       if(!$sender instanceof Player){
         $sender->sendMessage($this->getPrefix().TF::RED." You must run command in-game.");
@@ -156,6 +164,11 @@ class Main extends PluginBase implements Listener{
           $sender->sendMessage($this->translate($this, $this->getFormatPath(), $coords));
           return true;
       }
+    }elseif($command->getName() === "coordtags"){
+     if(!$sender->hasPermission("coords.command.tags")){
+       $sender->sendMessage($this->getPrefix().TF::RED." You do not have permission to use the tags command!");
+       return true;
+     }
     }
   }
   
