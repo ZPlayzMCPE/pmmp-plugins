@@ -14,9 +14,7 @@ CapsLimiter is a PocketMine-MP plugin intended to limit the use of capital lette
 ## Permissions
 ```yaml
  capslimiter.command:
-  description: Allows you to use /limit
   default: op
  capslimiter.bypass:
-  description: Allows you to bypass capital letters
   default: false
 ```
