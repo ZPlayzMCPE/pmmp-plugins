@@ -7,4 +7,15 @@ author: kenygamer
 website: https://github.com/kenygamer/pmmp-plugins/blob/master/Coords
 
 commands:
- ...
+ coords:
+  permission: coords.command.coords
+
+permissions:
+ coords.command.coords:
+  default: true
+ coords.command.see:
+  default: op
+ coords.command.tags:
+  default: op
+ coords.command.update:
+  default: op
