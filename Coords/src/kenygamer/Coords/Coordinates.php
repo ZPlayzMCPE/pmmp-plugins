@@ -15,6 +15,39 @@
  * GNU General Public License for more details.
  */
  
- namespace kenygamer\Coords;
+namespace kenygamer\Coords;
+
+use pocketmine\Player;
+use pocketmine\Server;
+
+class Coordinates{
  
- class Coordinates{
+ public function __construct(Player $player){
+  $coords[0] = $this->roundVal($player->getX());
+  $coords[1] = $this->roundVal($player->getY());
+  $coords[2] = $this->roundVal($player->getZ());
+  $coords[3] = $player->getLevel()->getName();
+  /*for($i = 0; $i < count($coords) - 1; $i++){
+   $coords[$i] = $this->roundVal($coords[$i]);
+  }*/
+  return $coords;
+ }
+ 
+ /**
+  * Returns a rounded value
+  *
+  * @param float $value
+  *
+  * @return int|float
+  */
+ private function roundVal($value){
+  if(is_int($value)){
+   return $value;
+  }elseif(is_float($value)){
+   return round($value, 1);
+  }else{
+   return 0;
+  }
+ }
+ 
+}
