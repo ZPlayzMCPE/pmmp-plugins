@@ -36,7 +36,7 @@ class Coordinates{
  /**
   * Returns a rounded value
   *
-  * @param float $value
+  * @param mixed $value
   *
   * @return int|float
   */
