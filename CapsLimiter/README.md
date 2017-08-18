@@ -1,5 +1,4 @@
 # CapsLimiter
-![Poggit](https://poggit.pmmp.io/ci.shield/kenygamer/CapsLimiter/CapsLimiter)
 [![Average time to resolve an issue](http://isitmaintained.com/badge/resolution/kenygamer/pmmp-plugins.svg)](http://isitmaintained.com/project/kenygamer/pmmp-plugins "Average time to resolve an issue")
 ![Total downloads](https://img.shields.io/github/downloads/kenygamer/pmmp-plugins/total.svg)
 
