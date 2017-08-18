@@ -148,22 +148,22 @@ class Main extends PluginBase implements Listener{
       $dm = (int) $this->getConfig()->get("display-method");
       switch($dm){
         case 1:
-          $sender->sendMessage($this->translate($this, $this->format, $coords));
+          $sender->sendMessage($this->translate($this->format, $coords));
           return true;
           break;
         case 2:
-          $sender->sendPopup($this->translate($this, $this->format, $coords));
+          $sender->sendPopup($this->translate($this->format, $coords));
           return true;
           break;
         case 3:
-          $sender->sendTip($this->translate($this, $this->format, $coords));
+          $sender->sendTip($this->translate($this->format, $coords));
           return true;
           break;
         default:
           $this->getLogger()->warning("Invalid display mode $dm, resetting to message");
           $this->getConfig()->set("display-method", 1);
           $this->getConfig()->save();
-          $sender->sendMessage($this->translate($this, $this->getFormatPath(), $coords));
+          $sender->sendMessage($this->translate($this->format, $coords));
           return true;
       }
     }elseif($command->getName() === "coordtags"){
