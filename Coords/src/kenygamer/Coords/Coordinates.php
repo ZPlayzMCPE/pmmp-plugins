@@ -21,11 +21,25 @@ use pocketmine\Player;
 
 class Coordinates{
  
+ /** @var Player */
+ private $player;
+ 
  public function __construct(Player $player){
-  $coords[0] = $this->roundVal($player->getX());
-  $coords[1] = $this->roundVal($player->getY());
-  $coords[2] = $this->roundVal($player->getZ());
-  $coords[3] = $player->getLevel()->getName();
+  $this->player = $player;
+ }
+ 
+ /**
+  * Returns a numeric array with player
+  * coordinates
+  * 
+  *
+  * @return array
+  */
+ public function getCoords(){
+  $coords[0] = $this->roundVal($this->player->getX());
+  $coords[1] = $this->roundVal($this->player->getY());
+  $coords[2] = $this->roundVal($this->player->getZ());
+  $coords[3] = $this->player->getLevel()->getName();
   /*for($i = 0; $i < count($coords) - 1; $i++){
    $coords[$i] = $this->roundVal($coords[$i]);
   }*/
