@@ -17,7 +17,7 @@
 
 namespace kenygamer\Coords;
 
-use pocketmine\command\Command;
+use pocketmine\command\{Command, CommandSender, CommandExecutor};
 use pocketmine\event\Listener;
 use pocketmine\Player;
 use pocketmine\plugin\PluginBase;
