@@ -63,6 +63,8 @@ class Main extends PluginBase implements Listener{
     if(!file_exists($this->getFormatPath())){
       $this->format = "X: %X% Y: %Y% Z: %Z% %LINE%Level: %LEVEL%";
       file_put_contents($this->getFormatPath(), $this->format);
+    }else{
+      $this->format = file_get_contents($this->getFormatPath());
     }
   }
   
@@ -71,7 +73,7 @@ class Main extends PluginBase implements Listener{
    *
    * @return string
    */
-  private function getPrefix(){
+  private function getPrefix() : string{
     return TF::GREEN."[Coords]".TF::RESET;
   }
   
@@ -80,19 +82,18 @@ class Main extends PluginBase implements Listener{
    *
    * @return string
    */
-  private function getFormatPath(){
+  private function getFormatPath() : string{
     return $this->getDataFolder()."coords.message";
   }
   
   /**
    * Returns a string with its tags translated
    *
-   * @param string $message
    * @param array $coords
    *
    * @return string
    */
-  private function translate(string $message, array $coords){
+  private function translate(array $coords) : string{
    $tags = [
      "%LINE%",
      "%X%",
@@ -107,7 +108,7 @@ class Main extends PluginBase implements Listener{
       $coords[2],
       $coords[3]
       ];
-    return str_replace($tags, $values, $message);
+    return str_replace($tags, $values, $this->format);
   }
   
   /**
@@ -127,7 +128,7 @@ class Main extends PluginBase implements Listener{
         }
         $player = $this->getServer()->getPlayer(strtolower($args[0]));
         if($player instanceof Player){
-          $coords = new Coordinates($player);
+          $coords = (new Coordinates($player))->getCoords();
           $sender->sendMessage($this->getPrefix().TF::AQUA." ".strtolower($args[0])."'s".TF::YELLOW." coordinates:\n".TF::GOLD."X: ".TF::BLUE.$coords[0]."\n".TF::GOLD."Y: ".TF::BLUE.$coords[1]."\n".TF::GOLD."Z: ".TF::BLUE.$coords[2]."\n".TF::GOLD."Level: ".TF::BLUE.$coords[3]);
           return true;
         }else{
@@ -144,7 +145,7 @@ class Main extends PluginBase implements Listener{
         return true;
       }
       $sender->sendMessage($this->getPrefix().TF::GREEN." Getting your coordinates...");
-      $coords = new Coordinates($sender);
+      $coords = (new Coordinates($sender))->getCoords();
       $dm = (int) $this->getConfig()->get("display-method");
       switch($dm){
         case 1:
@@ -176,7 +177,7 @@ class Main extends PluginBase implements Listener{
       if(!$sender->hasPermission("coords.command.update")){
         $sender->sendMessage($this->getPrefix().TF::RED." You do not have permission to use the update command!");
       }
-      if(empty($message = $args[0])){
+      if(!isset($args[0]) || empty($message = $args[0])){
         $sender->sendMessage("Usage: /coordupdate <message>");
         return true;
       }
