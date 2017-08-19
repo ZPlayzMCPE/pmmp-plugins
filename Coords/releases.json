@@ -1,0 +1,15 @@
+[
+  {
+    "version": "1.0",
+    "release_time": 1481328000,
+    "features": [
+      "Plugin that simply allows you to see your coordinates."
+      ]
+  },
+  {
+    "version": "2.0",
+    "release_time": 1497225600,
+    "features": [
+      ]
+  }
+]
