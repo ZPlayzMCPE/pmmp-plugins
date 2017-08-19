@@ -8,8 +8,12 @@ website: https://github.com/kenygamer/pmmp-plugins/blob/master/Coords
 
 commands:
  coords:
-  permission: coords.command.coords
-
+  default: true
+ coordtags:
+  default: op
+ coordupdate:
+  default: op
+  
 permissions:
  coords.command.coords:
   default: true
