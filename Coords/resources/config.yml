@@ -1,1 +1,12 @@
 # Configuration file for Coords by Kevin Andrews;
+
+# Settings:
+
+# Display method
+# Possible values:
+ # 1 = Chat (default)
+ # 2 = Popup
+ # 3 = Tip
+# It's suggested to choose between Popup and Tip, since when typing the command
+# the chat window will close, allowing the player to see his HUD
+display-method: 1
