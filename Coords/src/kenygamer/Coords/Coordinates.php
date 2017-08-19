@@ -18,7 +18,6 @@
 namespace kenygamer\Coords;
 
 use pocketmine\Player;
-use pocketmine\Server;
 
 class Coordinates{
  
