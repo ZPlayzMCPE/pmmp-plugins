@@ -10,6 +10,42 @@
     "version": "2.0",
     "release_time": 1497225600,
     "features": [
+      "Format the message to your liking through /coords update.",
+      "Fixed a permission issue."
+      ]
+  },
+  {
+    "version": "2.2",
+    "release_time": 1497225600,
+    "features": [
+      "See the coordinates of other online players.",
+      "Permission node for using main command."
+      ]
+  },
+  {
+    "version": "3.0",
+    "release_time": 1498348800,
+    "features": [
+      "New plugin formats.",
+      "Code rewritten from scratch.",
+      "New configuration file! Choose the display method: message, popup or tip.",
+      "Developer API."
+      ]
+  },
+  {
+    "version": "3.0#FINAL",
+    "release_time": 1498435200,
+    "features": [
+      "Fixed issues with configuration file loading.",
+      "Troubleshooting permissions when using /coords."
+      ]
+  },
+  {
+    "version": "3.1",
+    "release_time": 1503091440,
+    "features": [
+      "API removed, however you can create a kenygamer\Coords\Coordinates object.",
+      "Removed support for PocketMine APIs < 3.0.0-ALPHA7."
       ]
   }
 ]
