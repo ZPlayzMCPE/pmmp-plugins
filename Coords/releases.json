@@ -44,6 +44,7 @@
     "version": "3.1",
     "release_time": 1503091440,
     "features": [
+      "Added two new commands: /coordtags and /coordupdate.",
       "API removed, however you can create a kenygamer\Coords\Coordinates object.",
       "Removed support for PocketMine APIs < 3.0.0-ALPHA7.
       ]
