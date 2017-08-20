@@ -14,3 +14,97 @@
  * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
  * GNU General Public License for more details.
 */
+
+namespace kenygamer\ChatLogger\classes;
+
+use pockemine\Player;
+
+class Log{
+  
+  const LOG_PATH = "data/log/db";
+  
+  /** @var Main */
+  private $plugin;
+  /** @var Player */
+  private $player;
+  /** @var string */
+  private $message;
+  
+  public function __construct(Main $plugin, Player $player, string $message){
+    $this->plugin = $plugin;
+    $this->player = $player;
+    $this->message = $message;
+    /**/ /**/ /**/ /**/ /**/
+    $this->log();
+  }
+  
+  /**
+   * Returns all logs in form of array
+   *
+   * @return array
+   */
+  private function getChatLogs(){
+    return json_decode(file_get_contents($this->getDataFolder().self::LOG_PATH), true);
+  }
+  
+  /**
+   * Logs a chat message
+   *
+   * @return void
+   */
+  private function log(){
+    $time = date('H:i:s');
+    $date = date('d-m-Y');
+    $name = strtolower($this->player->getName());
+    $logs = $this->getChatLogs();
+    $id = ++(end($logs))['id'];
+    $log = [
+      'id' => $id,
+      'date' => [
+        'time' => $time,
+        'date' => $date
+        ],
+      'player' => $name,
+      'message' => $this->message
+      ];
+    $this->plugin->debug("Saving $name's message...");
+    if($this->save($log)){
+      $this->plugin->debug("$name's message successfully saved");
+    }else{
+      $this->plugin->debug("Error while saving $name's message");
+    }
+  }
+  
+  /**
+   * Saves message in log
+   *
+   * @param array $log
+   *
+   * @return bool
+   */
+  private function save(array $log){
+    $event = new PlayerChatLogEvent($log['id'], $log['date'], $this->player, $this->message);
+    $this->plugin->getServer()->getPluginManager()->callEvent($event);
+    if($event->isCancelled()){
+      $this->plugin->debug("PlayerChatLogEvent event was canceled.");
+      return false;
+    }
+    foreach($this->getChatLogs() as $chatLog){
+      $logs[] = $chatLog;
+    }
+    $logs[] = $log;
+    $prettySave = (bool) $this->plugin->getConfig()->get("pretty-save");
+    if($prettySave){
+      if(file_put_contents(self::LOG_PATH, json_encode($logs, JSON_PRETTY_PRINT)) === false){
+        return false;
+      }
+      return true;
+    }else{
+      if(file_put_contents(self::LOG_PATH, json_encode($logs)) === false){
+        return false;
+      }
+      return true;
+    }
+  }
+  
+}
