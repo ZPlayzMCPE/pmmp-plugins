@@ -46,7 +46,7 @@ class Main extends PluginBase implements Listener{
       if(empty($player) || empty($date)){
         $this->getLogger()->error("Report couldn't be generated: empty field(s)");
       }else{
-        new Report($player, $date);
+        new Report($this, $player, $date);
       }
     }
     $this->getServer()->getPluginManager()->registerEvents($this, $this);
@@ -104,7 +104,7 @@ class Main extends PluginBase implements Listener{
       return;
     }
     $this->debug("Logging ".$player->getName()."'s message...");
-    new Log($player, $event->getMessage());
+    new Log($this, $player, $event->getMessage());
     $this->debug($player->getName()."'s message successfully logged");
   }
   
