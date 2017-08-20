@@ -105,7 +105,6 @@ class Main extends PluginBase implements Listener{
     }
     $this->debug("Logging ".$player->getName()."'s message...");
     new Log($this, $player, $event->getMessage());
-    $this->debug($player->getName()."'s message successfully logged");
   }
   
 }
