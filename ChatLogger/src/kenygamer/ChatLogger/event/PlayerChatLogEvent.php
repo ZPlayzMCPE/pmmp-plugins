@@ -1,7 +1,5 @@
 <?php
 
-<?php
-
 /*
  * ChatLogger plugin for PocketMine-MP
  * Copyright (C) 2017 Kevin Andrews <https://github.com/kenygamer/pmmp-plugins/blob/master/ChatLogger>
@@ -16,3 +14,43 @@
  * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
  * GNU General Public License for more details.
 */
+
+namespace kenygamer\ChatLogger\event;
+
+use pocketmine\event\Cancellable;
+use pocketmine\event\Event;
+use pocketmine\Player;
+
+class PlayerChatLogEvent extends Event implements Cancellable{
+  
+  public static $handlerList = null;
+  
+  private $id;
+  private $date;
+  private $player;
+  private $message;
+  
+  public function __construct(int $id, array $date, Player $player, string $message){
+    $this->id = $id;
+    $this->date = $date;
+    $this->player = $player;
+    $this->message = $message;
+  }
+  
+  public function getId(){
+    return $this->id;
+  }
+  
+  public function getDate(){
+    return $this->date;
+  }
+  
+  public function getPlayer(){
+    return $this->player;
+  }
+  
+  public function getMessage(){
+    return $this->message;
+  }
+  
+}
