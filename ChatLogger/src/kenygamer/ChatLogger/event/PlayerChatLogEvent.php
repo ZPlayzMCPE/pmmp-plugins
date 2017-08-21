@@ -37,19 +37,19 @@ class PlayerChatLogEvent extends Event implements Cancellable{
     $this->message = $message;
   }
   
-  public function getId(){
+  public function getId() : int{
     return $this->id;
   }
   
-  public function getDate(){
+  public function getDate() : array{
     return $this->date;
   }
   
-  public function getPlayer(){
+  public function getPlayer() : Player{
     return $this->player;
   }
   
-  public function getMessage(){
+  public function getMessage() : string{
     return $this->message;
   }
   
