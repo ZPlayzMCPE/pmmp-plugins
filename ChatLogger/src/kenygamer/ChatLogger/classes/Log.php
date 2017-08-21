@@ -19,6 +19,8 @@ namespace kenygamer\ChatLogger\classes;
 
 use pockemine\Player;
 
+use kenygamer\ChatLogger\event\PlayerChatLogEvent;
+
 class Log{
   
   const LOG_PATH = "data/log/db";
