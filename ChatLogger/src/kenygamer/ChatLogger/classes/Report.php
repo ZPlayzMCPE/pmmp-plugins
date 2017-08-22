@@ -20,3 +20,80 @@ namespace kenygamer\ChatLogger\classes;
 use pockemine\Player;
 
 class Report{
+  
+  const LOG_PATH = "data/log/db";
+  const REPORT_PATH = "data/reports";
+  
+  /** @var Main */
+  private $plugin;
+  /** @var string */
+  private $player;
+  /** @var string */
+  private $date;
+  
+  public function __construct(Main $plugin, string $player, string $date){
+    $this->plugin = $plugin;
+    $this->player = $player;
+    $this->date = $date;
+    /**/ /**/ /**/ /**/ /**/
+    $this->generate();
+  }
+  
+  /**
+   * Generates a report
+   *
+   * @return void
+   */
+  private function generate(){
+    $reportPath = $this->plugin->getDataFolder().self::REPORT_PATH."/".$this->date."_".$this->player;
+    if(file_exists($reportPath)){
+      $this->plugin->getLogger()->error("Report couldn't be generated: already exists $reportPath");
+      return;
+    }
+    $this->plugin->debug("[REPORT] Reading logger...");
+    $logs = $this->getChatLogs();
+    $this->plugin->debug("[REPORT] Initializing counters...");
+    $matches = [];
+    $num = 0;
+    foreach($logs as $chatLog){
+      if($chatLog['date']['date'] === $this->date and $chatLog['player'] === $this->player){
+        ++$num;
+        $this->plugin->debug("[REPORT] Pushing match $num...");
+        $matches[] = $chatLog;
+      }
+    }
+    if(empty($matches)){
+      $this->plugin->debug("[REPORT] Process completed without finding matches");
+    }
+    $this->plugin->debug("[REPORT] Saving ".$this->player"'s report...");
+    if($this->save($reportPath, $matches)){
+      $this->plugin->debug("[REPORT] ".$this->player."'s report successfully saved to $reportPath");
+    }else{
+      $this->plugin->debug("[REPORT] Error while saving ".$this->player."'s report");
+    }
+  }
+  
+  /**
+   * Saves a report to file
+   *
+   * @param string $path
+   * @param array $report
+   *
+   * @return bool
+   */
+  private function save(string $path, array $report){
+    $prettySave = (bool) $this->plugin->getConfig()->get("pretty-save");
+    if($prettySave){
+      if(file_put_contents($path, json_encode($report, JSON_PRETTY_PRINT)) === false){
+        return false;
+      }
+      return true;
+    }else{
+      if(file_put_contents($path, json_encode($report)) === false){
+        return false;
+      }
+      return true;
+    }
+  }
+  
+}
