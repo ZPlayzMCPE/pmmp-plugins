@@ -21,7 +21,7 @@ use pockemine\Player;
 
 class Report{
   
-  const LOG_PATH = "data/log/db";
+  const LOG_PATH = "data/log/db.json";
   const REPORT_PATH = "data/reports";
   
   /** @var Main */
