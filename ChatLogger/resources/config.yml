@@ -2,3 +2,20 @@
 
 # Settings:
 
+# Enable debug
+ # Highly recommended when creating reports or when you are having chat logging issues
+ # 0 = Disable
+ # 1 = Enable
+enable-debug: 0
+
+# Reports
+ # Reports allow you to get messages according to your search terms for a specific player
+ # Reports are generated on server startup; check the console logs for report path
+# false = Disable
+# true = Enable
+generate-report: false
+# Player name (not case sensitive)
+report-player: kenygamer
+# Messages date
+ # Example: 01-01-2017
+report-date: 21-08-2017
