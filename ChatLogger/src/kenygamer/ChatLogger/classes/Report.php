@@ -33,7 +33,7 @@ class Report{
   
   public function __construct(Main $plugin, string $player, string $date){
     $this->plugin = $plugin;
-    $this->player = $player;
+    $this->player = strtolower($player); //not case sensitive
     $this->date = $date;
     /**/ /**/ /**/ /**/ /**/
     $this->generate();
