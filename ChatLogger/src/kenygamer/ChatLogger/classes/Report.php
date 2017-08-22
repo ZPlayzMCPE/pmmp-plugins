@@ -81,7 +81,7 @@ class Report{
    *
    * @return bool
    */
-  private function save(string $path, array $report){
+  private function save(string $path, array $report) : bool{
     $prettySave = (bool) $this->plugin->getConfig()->get("pretty-save");
     if($prettySave){
       if(file_put_contents($path, json_encode($report, JSON_PRETTY_PRINT)) === false){
