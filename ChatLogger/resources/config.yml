@@ -19,3 +19,7 @@ report-player: kenygamer
 # Messages date
  # Example: 01-01-2017
 report-date: 21-08-2017
+
+# Enable pretty printing
+ # Makes chat logger and reports human readable
+...
