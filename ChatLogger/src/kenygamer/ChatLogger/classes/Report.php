@@ -40,6 +40,19 @@ class Report{
   }
   
   /**
+   * Returns all logs in form of array
+   *
+   * @return array
+   */
+  private function getChatLogs() : array{
+    if(!file_exists($logs = $this->getDataFolder().self::LOG_PATH)){
+      @file_put_contents($logs, "[]");
+      return [];
+    }
+    return json_decode(file_get_contents($logs), true);
+  }
+  
+  /**
    * Generates a report
    *
    * @return void
