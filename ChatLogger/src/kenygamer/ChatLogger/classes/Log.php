@@ -45,7 +45,7 @@ class Log{
    *
    * @return array
    */
-  private function getChatLogs(){
+  private function getChatLogs() : array{
     return json_decode(file_get_contents($this->getDataFolder().self::LOG_PATH), true);
   }
   
@@ -84,7 +84,7 @@ class Log{
    *
    * @return bool
    */
-  private function save(array $log){
+  private function save(array $log) : bool{
     $event = new PlayerChatLogEvent($log['id'], $log['date'], $this->player, $this->message);
     $this->plugin->getServer()->getPluginManager()->callEvent($event);
     if($event->isCancelled()){
