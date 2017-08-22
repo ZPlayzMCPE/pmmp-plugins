@@ -22,4 +22,6 @@ report-date: 21-08-2017
 
 # Enable pretty printing
  # Makes chat logger and reports human readable
-...
+# false = Disable
+# true = Enable
+pretty-save: false
