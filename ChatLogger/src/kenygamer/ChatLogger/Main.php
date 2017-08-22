@@ -37,6 +37,9 @@ class Main extends PluginBase implements Listener{
   public function onEnable(){
     $this->getLogger()->info(TF::GREEN."Enabling ".$this->getDescription()->getFullName()."...");
     $this->loadConfig();
+    @mkdir($this->getDataFolder()."data");
+    @mkdir($this->getDataFolder()."data/log");
+    @mkdir($this->getDataFolder()."data/reports");
     $debug = (int) $this->getConfig()->get("enable-debug");
     $this->debug = ($debug === 0) ? false : true;
     $report = (bool) $this->getConfig()->get("generate-report");
