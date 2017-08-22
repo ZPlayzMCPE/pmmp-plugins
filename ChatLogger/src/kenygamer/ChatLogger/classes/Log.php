@@ -46,7 +46,11 @@ class Log{
    * @return array
    */
   private function getChatLogs() : array{
-    return json_decode(file_get_contents($this->getDataFolder().self::LOG_PATH), true);
+    if(!file_exists($logs = $this->getDataFolder().self::LOG_PATH)){
+      @file_put_contents($logs, "[]");
+      return [];
+    }
+    return json_decode(file_get_contents($logs), true);
   }
   
   /**
