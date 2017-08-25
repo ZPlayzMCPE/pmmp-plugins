@@ -87,7 +87,7 @@ class Main extends PluginBase implements Listener{
    */
   public function debug(string $message) : bool{
     if($this->debug){
-      $this->getLogger()->debug($message);
+      $this->getLogger()->info(TF::GRAY."DEBUG > $message");
       return true;
     }
     return false;
