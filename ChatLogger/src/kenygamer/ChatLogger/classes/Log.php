@@ -65,7 +65,7 @@ class Log{
     $name = strtolower($this->player->getName());
     $logs = $this->getChatLogs();
     if(end($logs) === false){
-      $id = 0;
+      $id = 1;
     }else{
       $id = ++end($logs)['id'];
     }
