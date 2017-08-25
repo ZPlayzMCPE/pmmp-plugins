@@ -47,7 +47,7 @@ class Log{
    * @return array
    */
   private function getChatLogs() : array{
-    if(!file_exists($logs = $this->getDataFolder().self::LOG_PATH)){
+    if(!file_exists($logs = $this->plugin->getDataFolder().self::LOG_PATH)){
       @file_put_contents($logs, "[]");
       return [];
     }
