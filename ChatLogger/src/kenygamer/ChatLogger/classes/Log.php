@@ -106,12 +106,12 @@ class Log{
     $logs[] = $log;
     $prettySave = (bool) $this->plugin->getConfig()->get("pretty-save");
     if($prettySave){
-      if(file_put_contents(self::LOG_PATH, json_encode($logs, JSON_PRETTY_PRINT)) === false){
+      if(file_put_contents($this->plugin->getDataFolder().self::LOG_PATH, json_encode($logs, JSON_PRETTY_PRINT)) === false){
         return false;
       }
       return true;
     }else{
-      if(file_put_contents(self::LOG_PATH, json_encode($logs)) === false){
+      if(file_put_contents($this->plugin->getDataFolder().self::LOG_PATH, json_encode($logs)) === false){
         return false;
       }
       return true;
