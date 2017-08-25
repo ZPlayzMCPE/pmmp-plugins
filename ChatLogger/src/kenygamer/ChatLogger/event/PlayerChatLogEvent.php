@@ -42,7 +42,7 @@ class PlayerChatLogEvent extends Event implements Cancellable{
   }
   
   /**
-   * Returns the chat log ID
+   * Returns chat log ID
    *
    * @return int
    */
@@ -61,7 +61,7 @@ class PlayerChatLogEvent extends Event implements Cancellable{
   }
   
   /**
-   * Returns a Player object
+   * Returns Player object
    *
    * @return Player
    */
