@@ -64,7 +64,11 @@ class Log{
     $date = date('d-m-Y');
     $name = strtolower($this->player->getName());
     $logs = $this->getChatLogs();
-    $id = ++(end($logs))['id'];
+    if(end($logs) === false){
+      $id = 0;
+    }else{
+      $id = ++end($logs)['id'];
+    }
     $log = [
       'id' => $id,
       'date' => [
