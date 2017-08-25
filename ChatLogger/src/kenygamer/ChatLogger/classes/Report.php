@@ -80,7 +80,7 @@ class Report{
     if(empty($matches)){
       $this->plugin->debug("[REPORT] Process completed without finding matches");
     }
-    $this->plugin->debug("[REPORT] Saving ".$this->player"'s report...");
+    $this->plugin->debug("[REPORT] Saving ".$this->player."'s report...");
     if($this->save($reportPath, $matches)){
       $this->plugin->debug("[REPORT] ".$this->player."'s report successfully saved to $reportPath");
     }else{
