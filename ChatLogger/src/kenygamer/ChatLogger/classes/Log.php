@@ -94,6 +94,7 @@ class Log{
    * @return bool
    */
   private function save(array $log) : bool{
+    $this->plugin->debug("Calling PlayerChatLogEvent...");
     $event = new PlayerChatLogEvent($log['id'], $log['date'], $this->player, $this->message);
     $this->plugin->getServer()->getPluginManager()->callEvent($event);
     if($event->isCancelled()){
