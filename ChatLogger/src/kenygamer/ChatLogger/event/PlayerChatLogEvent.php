@@ -25,9 +25,13 @@ class PlayerChatLogEvent extends Event implements Cancellable{
   
   public static $handlerList = null;
   
+  /** @var int */
   private $id;
+  /** @var string[] */
   private $date;
+  /** @var Player */
   private $player;
+  /** @var string */
   private $message;
   
   public function __construct(int $id, array $date, Player $player, string $message){
@@ -37,18 +41,39 @@ class PlayerChatLogEvent extends Event implements Cancellable{
     $this->message = $message;
   }
   
+  /**
+   * Returns the chat log ID
+   *
+   * @return int
+   */
   public function getId() : int{
     return $this->id;
   }
   
+  /**
+   * Returns an associative array
+   * with time and date
+   *
+   * @return string[]
+   */
   public function getDate() : array{
     return $this->date;
   }
   
+  /**
+   * Returns a Player object
+   *
+   * @return Player
+   */
   public function getPlayer() : Player{
     return $this->player;
   }
   
+  /**
+   * Returns chat message
+   *
+   * @return string
+   */
   public function getMessage() : string{
     return $this->message;
   }
