@@ -15,6 +15,8 @@
  * GNU General Public License for more details.
 */
 
+namespace kenygamer\ChatLogger;
+
 use pocketmine\event\player\PlayerChatEvent;
 use pocketmine\event\Listener;
 use pocketmine\Server;
