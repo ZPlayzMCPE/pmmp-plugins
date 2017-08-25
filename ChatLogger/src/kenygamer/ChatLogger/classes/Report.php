@@ -17,7 +17,9 @@
 
 namespace kenygamer\ChatLogger\classes;
 
-use pockemine\Player;
+use pocketmine\Player;
+
+use kenygamer\ChatLogger\Main;
 
 class Report{
   
