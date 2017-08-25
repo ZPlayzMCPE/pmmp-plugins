@@ -19,6 +19,7 @@ namespace kenygamer\ChatLogger\classes;
 
 use pockemine\Player;
 
+use kenygamer\ChatLogger\Main;
 use kenygamer\ChatLogger\event\PlayerChatLogEvent;
 
 class Log{
