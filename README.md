@@ -1,4 +1,5 @@
 # pmmp-plugins
+![License](https://img.shields.io/badge/license-GNU%20GPLv3-blue.svg)
 > The new home of my PocketMine-MP plugins.
 
 ## Plugins
