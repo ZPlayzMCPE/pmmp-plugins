@@ -145,12 +145,12 @@ class Area{
   /**
    * Checks if area is inside given position
    *
-   * @param Position $position
+   * @param Vector3 $position
    * @param string $level
    *
    * @return bool
    */
-  public function contains(Position $position, string $level) : bool{
+  public function contains(Vector3 $position, string $level) : bool{
     if((min($this->pos1->getX(), $this->pos2->getX()) <= $position->getX()) && (max($this->pos1->getX(), $this->pos2->getX()) >= $position->getX()) && (min($this->pos1->getY(), $this->pos2->getY()) <= $position->getY()) && (max($this->pos1->getY(), $this->pos2->getY()) >= $position->getY()) && (min($this->pos1->getZ(), $this->pos2->getZ()) <= $position->getZ()) && (max($this->pos1->getZ(), $this->pos2->getZ()) >= $position->getZ()) && ($this->level == $level)) {
       return true;
     }
