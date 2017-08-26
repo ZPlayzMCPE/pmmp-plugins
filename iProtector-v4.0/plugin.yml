@@ -8,7 +8,7 @@ website: https://github.com/kenygamer/pmmp-plugins/blob/master/iProtector-v4.0
 
 commands:
  area:
-  usage: "area <pos1/pos2/create/here/list/flag/whitelist/delete>"
+  usage: "/area <pos1/pos2/create/here/list/flag/whitelist/delete>"
   permission: iprotector.command.area
 
 permissions:
