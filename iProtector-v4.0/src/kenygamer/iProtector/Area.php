@@ -40,7 +40,7 @@ class Area{
   /** @var Main */
   private $plugin;
   
-  public function __construct(string $name, array $flags, Vector3 $pos1, Vector3 $pos2, string $level, array $whitelist, Main $plugin){
+  public function __construct(string $name, array $flags, array $pos1, array $pos2, string $level, array $whitelist, Main $plugin){
     $this->name = strtolower($name);
     $this->flags = $flags;
     $this->pos1 = new Vector3($pos1[0], $pos1[1], $pos1[2]);
