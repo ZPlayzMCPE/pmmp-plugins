@@ -312,7 +312,8 @@ class Main extends PluginBase implements Listener{
    * @return void
    */
   public function onHurt(EntityDamageEvent $event){
-    if($player = $event->getEntity() instanceof Player){
+    if($event->getEntity() instanceof Player){
+      $player = $event->getEntity();
       if(!$this->canGetHurt($player)){
         if($this->c["Messages"]["Hurt"]["Enable"]){
           $player->sendMessage(str_replace("{player}", $player->getName(), $this->c["Messages"]["Hurt"]["Message"]));
