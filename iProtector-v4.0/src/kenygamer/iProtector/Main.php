@@ -17,10 +17,12 @@
 
 namespace kenygamer\iProtector;
 
+use pocketmine\block\Block;
 use pocketmine\command\{Command, CommandSender, CommandExecutor};
 use pocketmine\event\block\{BlockBreakEvent, BlockPlaceEvent};
 use pocketmine\event\entity\{EntityDamageEvent, EntityExplodeEvent};
 use pocketmine\event\Listener;
+use pocketmine\level\{Level, Position};
 use pocketmine\math\Vector3;
 use pocketmine\Player;
 use pocketmine\plugin\PluginBase;
@@ -440,3 +442,121 @@ class Main extends PluginBase implements Listener{
     }
   return $o;
   }
+  
+  /**
+   * Checks if given player can touch area
+   *
+   * @param Player $player
+   * @param Block $block
+   *
+   * @return bool
+   */
+  public function canTouch(Player $player, Block $block) : bool{
+    if($player->hasPermission("iprotector") || $player->hasPermission("iprotector.access")){
+      return true;
+    }
+    $o = true;
+    $g = (isset($this->levels[$block->getLevel()->getName()]) ? $this->levels[$block->getLevel()->getName()]["Touch"] : $this->touch);
+    if ($g){
+      $o = false;
+    }
+    foreach($this->areas as $area){
+      if($area->contains(new Vector3($block->getX(), $block->getY(), $block->getZ()), $block->getLevel()->getName())){
+        if($area->getFlag("touch")){
+          $o = false;
+        }
+        if($area->isWhitelisted(strtolower($player->getName()))){
+          $o = true;
+          break;
+        }
+        if(!$area->getFlag("edit") && $g){
+          $o = true;
+          break;
+        }
+      }
+    }
+  return $o;
+  }
+  
+  /**
+   * Checks if given player can get hurt on area
+   *
+   * @param Player $player
+   *
+   * @return bool
+   */
+  public function canGetHurt(Player $player) : bool{
+    $o = true;
+    $g = (isset($this->levels[$player->getLevel()->getName()]) ? $this->levels[$player->getLevel()->getName()]["God"] : $this->god);
+    if($g){
+      $o = false;
+    }
+    foreach($this->areas as $area){
+      if($area->contains(new Vector3($player->getX(), $player->getY(), $player->getZ()), $player->getLevel()->getName())){
+        if(!$area->getFlag("god") && $g){
+          $o = true;
+          break;
+        }
+        if($area->getFlag("god")){
+          $o = false;
+        }
+      }
+    }
+    return $o;
+  }
+  
+  /**
+   * Checks if given entity can explode area
+   *
+   * @param Position $position
+   * @param Level $level
+   *
+   * @return bool
+   */
+  public function canExplode(Position $position, Level $level) : bool{
+    $o = true;
+    $g = (isset($this->levels[$level->getName()]) ? $this->levels[$level->getName()]["TNT"] : $this->tnt);
+    if($g){
+      $o = false;
+    }
+    foreach($this->areas as $area){
+      if($area->contains(new Vector3($position->getX(), $position->getY(), $position->getZ()), $level->getName())){
+        if($area->getFlag("tnt")){
+          $o = false;
+          break;
+        }
+        if($area->getFlag("tnt") && $g){
+          $o = true;
+          break;
+        }
+      }
+    }
+    return $o;
+  }
+  
+  /**
+   * Saves areas to file
+   *
+   * @return void
+   */
+  public function saveAreas(){
+    $areas = [];
+    foreach($this->areas as $area){
+      $areas[] = [
+        "name" => $area->getName(),
+        "flags" => $area->getFlags(),
+        "pos1" => $area->getPos1(),
+        "pos2" => $area->getPos2(),
+        "level" => $area->getLevel(),
+        "whitelist" => $area->getWhitelist()
+        ];
+    }
+    $jpp = (bool) $this->c["Settings"]["JPP"];
+    if($jpp){
+      file_put_contents($this->getDataFolder()."areas.json", json_encode($areas, JSON_PRETTY_PRINT));
+    }else{
+      file_put_contents($this->getDataFolder()."areas.json", json_encode($areas));
+    }
+  }
+  
+}
