@@ -77,6 +77,15 @@ class Main extends PluginBase implements Listener{
   }
   
   /**
+   * Returns command prefix
+   *
+   * @return string
+   */
+  private function getPrefix() : string{
+    return TF::GREEN."[iProtector:kenygamer]".TF::RESET;
+  }
+  
+  /**
    * @param CommandSender $sender
    * @param Command $command
    * @param string $label
