@@ -17,6 +17,7 @@
     "version": "1.2",
     "release_time": 1503697320,
     "features": [
+      "Renamed hideme.command permission to hideme.commands",
       "Fixed issue with custom nametags not working."
       ]
   }
