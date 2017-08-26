@@ -1,1 +1,9 @@
+name: HideMe
+main: kenygamer\HideMe\Main
+version: 1.2
+api: 3.0.0-ALPHA7
 
+author: kenygamer
+website: https://github.com/kenygamer/pmmp-plugins/blob/master/HideMe
+
+commands:
