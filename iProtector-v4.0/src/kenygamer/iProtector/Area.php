@@ -20,8 +20,6 @@ namespace kenygamer\iProtector;
 use pocketmine\math\Vector3;
 use pocketmine\Player;
 
-use kenygamer\iProtector\Main;
-
 class Area{
   
   const WHITELIST_ACTION_ADD = 0;
