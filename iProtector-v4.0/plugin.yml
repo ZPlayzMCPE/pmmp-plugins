@@ -1,1 +1,41 @@
+name: iProtector
+main: kenygamer\iProtector\Main
+version: 4.0.3#3.1b
+api: 3.0.0-ALPHA7
 
+author: kenygamer
+website: https://github.com/kenygamer/pmmp-plugins/blob/master/iProtector-v4.0
+
+commands:
+ area:
+  usage: "area <pos1/pos2/create/here/list/flag/whitelist/delete>"
+  permission: iprotector.command.area
+
+permissions:
+ iprotector:
+  default: false
+  children:
+   iprotector.access:
+    default: op
+   iprotector.command:
+    default: false
+    children:
+     iprotector.command.area:
+      default: op
+      children:
+       iprotector.command.area.pos1:
+        default: op
+       iprotector.command.area.pos2:
+        default: op
+       iprotector.command.area.create:
+        default: op
+       iprotector.command.area.here:
+        default: op
+       iprotector.command.area.list:
+        default: op
+       iprotector.command.area.flag:
+        default: op
+       iprotector.command.area.delete:
+        default: op
+       iprotector.command.area.whitelist:
+        default: op
