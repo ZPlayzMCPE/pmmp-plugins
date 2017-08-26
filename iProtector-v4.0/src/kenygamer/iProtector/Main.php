@@ -250,4 +250,55 @@ class Main extends PluginBase implements Listener{
         }
         break;
       case "whitelist":
-        ...
+        if($sender->hasPermission("iprotector") || $sender->hasPermission("iprotector.command") || $sender->hasPermission("iprotector.command.area") || $sender->hasPermission("iprotector.command.area.whitelist")){
+          if(isset($args[1]) && isset($this->areas[strtolower($args[1])])){
+            $area = $this->areas[strtolower($args[1])];
+            if(isset($args[2])){
+              $action = strtolower($args[2]);
+              switch($action){
+                case "add":
+                  $w = ($this->getServer()->getPlayer($args[3]) instanceof Player ? strtolower($this->getServer()->getPlayer($args[3])->getName()) : strtolower($args[3]));
+                  if(!$area->isWhitelisted($w)){
+                    $area->setWhitelisted($w);
+                    $o = $this->getPrefix().TF::GREEN." Player $w has been whitelisted in area ".$area->getName().".";
+                  }else{
+                    $o = $this->getPrefix().TF::RED." Player $w is already whitelisted in area ".$area->getName().".";
+                  }
+                  break;
+                case "list":
+                  $o = $this->getPrefix().TF::AQUA.$area->getName()."'s whitelist:\n";
+                  foreach($area->getWhitelist() as $w){
+                    $o .= " $w;";
+                  }
+                  break;
+                case "delete":
+                case "remove":
+                  $w = ($this->getServer()->getPlayer($args[3]) instanceof Player ? strtolower($this->getServer()->getPlayer($args[3])->getName()) : strtolower($args[3]));
+                  if($area->isWhitelisted($w)){
+                    $area->setWhitelisted($w, false);
+                    $o = $this->getPrefix().TF::GREEN." Player $w has been unwhitelisted in area ".$area->getName().".";
+                  }else{
+                    $o = $this->getPrefix().TF::RED." $w is already unwhitelisted in area ".$area->getName().".";
+                  }
+                  break;
+                default:
+                  $o = $this->getPrefix().TF::RED." Please specify a valid action. Usage: /area whitelist ".$area->getName()." <add/list/remove> [player]";
+                  break;
+              }
+            }else{
+              $o = $this->getPrefix().TF::RED." Please specify an action. Usage: /area whitelist ".$area->getName()." <add/list/remove> [player]";
+            }
+          }else{
+            $o = $this->getPrefix().TF::RED." Area doesn't exist. Usage: /area whitelist <area> <add/list/remove> [player]";
+          }
+        }else{
+          $o = $this->getPrefix().TF::RED." You do not have permission to use this subcommand.";
+        }
+        break;
+      default:
+        return false;
+        break;
+    }
+    $sender->sendMessage($o);
+    return true;
+  }
