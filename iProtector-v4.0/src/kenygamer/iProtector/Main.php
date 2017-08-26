@@ -117,4 +117,22 @@ class Main extends PluginBase implements Listener{
         }
         break;
       case "create":
-        
+        if($sender->hasPermission("iprotector") || $sender->hasPermission("iprotector.command") || $sender->hasPermission("iprotector.command.area") || $sender->hasPermission("iprotector.command.area.create")){
+          if(isset($args[1])){
+            if(isset($this->pos1[$n]) && isset($this->pos2[$n])){
+              if(!isset($this->areas[strtolower($args[1])])){
+                $area = new Area(strtolower($args[1]), [
+                  "edit" => true,
+                  "god" => false,
+                  "tnt" => false,
+                  "touch" => true
+                  ], [
+                  $this->pos1[$n]->getX(),
+                  $this->pos1[$n]->getY(),
+                  $this->pos1[$n]->getZ()
+                  ], [
+                  $this->pos2[$n]->getX(),
+                  $this->pos2[$n]->getY(),
+                  $this->pos2[$n]->getZ()
+                  ], $sender->getLevel()->getName(), [
+                  $n], $this];
