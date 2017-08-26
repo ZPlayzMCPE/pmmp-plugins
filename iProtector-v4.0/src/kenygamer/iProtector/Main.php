@@ -261,7 +261,7 @@ class Main extends PluginBase implements Listener{
                 case "add":
                   $w = ($this->getServer()->getPlayer($args[3]) instanceof Player ? strtolower($this->getServer()->getPlayer($args[3])->getName()) : strtolower($args[3]));
                   if(!$area->isWhitelisted($w)){
-                    $area->setWhitelisted($w);
+                    $area->setWhitelisted($w, Area::WHITELIST_ACTION_ADD);
                     $o = $this->getPrefix().TF::GREEN." Player $w has been whitelisted in area ".$area->getName().".";
                   }else{
                     $o = $this->getPrefix().TF::RED." Player $w is already whitelisted in area ".$area->getName().".";
@@ -277,7 +277,7 @@ class Main extends PluginBase implements Listener{
                 case "remove":
                   $w = ($this->getServer()->getPlayer($args[3]) instanceof Player ? strtolower($this->getServer()->getPlayer($args[3])->getName()) : strtolower($args[3]));
                   if($area->isWhitelisted($w)){
-                    $area->setWhitelisted($w, false);
+                    $area->setWhitelisted($w, Area::WHITELIST_ACTION_REMOVE);
                     $o = $this->getPrefix().TF::GREEN." Player $w has been unwhitelisted in area ".$area->getName().".";
                   }else{
                     $o = $this->getPrefix().TF::RED." $w is already unwhitelisted in area ".$area->getName().".";
