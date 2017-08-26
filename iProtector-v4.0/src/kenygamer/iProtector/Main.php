@@ -183,4 +183,62 @@ class Main extends PluginBase implements Listener{
         }
         break;
       case "flag":
+        if($sender->hasPermission("iprotector") || $sender->hasPermission("iprotector.command") || $sender->hasPermission("iprotector.command.area") || $sender->hasPermission("iprotector.command.area.flag")){
+          if(isset($args[1])){
+            if(isset($this->areas[strtolower($args[1])])){
+              $area = $this->areas[strtolower($args[1])];
+              if(isset($args[2])){
+                if(isset($area->flags[strtolower($args[2])])){
+                  $flag = strtolower($args[2]);
+                  if(isset($args[3])){
+                    $mode = strtolower($args[3]);
+                    if($mode == "true" || $mode == "on"){
+                      $mode = true;
+                    }else{
+                      $mode = false;
+                    }
+                    $area->setFlag($flag, $mode);
+                  }else{
+                    $area->toggleFlag($flag);
+                  }
+                  if($area->getFlag($flag)){
+                    $status = "on";
+                  }else{
+                    $status = "off";
+                  }
+                  $o = $this->getPrefix().TF::GREEN." Flag $flag set to $status for area ".$area->getName()."!";
+                }else{
+                  $o = $this->getPrefix().TF::RED." Flag not found. (Flags: edit, god, tnt, touch)";
+                }
+              }else{
+                $o = $this->getPrefix().TF::RED." Please specify a flag. (Flags: edit, god, tnt, touch";
+              }
+            }else{
+              $o = $this->getPrefix().TF::RED." Area doesn't exist.";
+            }
+          }else{
+            $o = $this->getPrefix().TF::RED." Please specify the area you would like to flag.";
+          }
+        }else{
+          $o = $this->getPrefix().TF::RED." You do not have permission to use this subcommand.";
+        }
+        break;
+      case "delete":
+        if($sender->hasPermission("iprotector") || $sender->hasPermission("iprotector.command") || $sender->hasPermission("iprotector.command.area") || $sender->hasPermission("iprotector.command.area.delete")){
+          if(isset($args[1])){
+            if(isset($this->areas[strtolower($args[1])])){
+              $area = $this->areas[strtolower($args[1])];
+              $area->delete();
+              $o = $this->getPrefix().TF::GREEN." Area deleted!";
+            }else{
+              $o = $this->getPrefix().TF::RED." Area does not exist.";
+            }
+          }else{
+            $o = $this->getPrefix().TF::RED." Please specify an area to delete.";
+          }
+        }else{
+          $o = $this->getPrefix().TF::RED." You do not have permission to use this subcommand.";
+        }
+        break;
+      case "whitelist":
         ...
