@@ -354,4 +354,89 @@ class Main extends PluginBase implements Listener{
    * @return bool
    */
   public function onBlockPlace(BlockPlaceEvent $event){
-    
+    $player = $event->getPlayer();
+    $block = $event->getBlock();
+    $n = strtolower($player->getName());
+    if(isset($this->sel1[$n])){
+      unset($this->sel1[$n]);
+      $this->pos1[$n] = new Vector3($block->getX(), $block->getY(), $block->getZ());
+      $player->sendMessage($this->getPrefix().TF::GREEN." Position 1 set to: (".$this->pos1[$n]->getX().", ".$this->pos1[$n]->getY().", ".$this->pos1[$n]->getZ().")");
+      $event->setCancelled();
+    }elseif(isset($this->sel2[$n])){
+      unset($this->sel2[$n]);
+      $this->pos2[$n] = new Vector3($block->getX(), $block->getY(), $block->getZ());
+      $player->sendMessage($this->getPrefix().TF::GREEN." Position 2 set to: (".$this->pos2[$n]->getX().", ".$this->pos2[$n]->getY().", ".$this->pos2[$n]->getZ().")");
+      $event->setCancelled();
+    }else{
+      if(!$this->canEdit($player, $block)){
+        if($this->c["Messages"]["Place"]["Enable"]){
+          $player->sendMessage(str_replace("{block}", $block->getName(), $this->c["Messages"]["Place"]["Enable"]));
+        }
+        $event->setCancelled();
+      }
+    }
+  }
+  
+  /**
+   * @param PlayerInteractEvent $event
+   *
+   * @return void
+   */
+  public function onBlockTouch(PlayerInteractEvent $event){
+    $player = $event->getPlayer();
+    $block = $event->getBlock();
+    if(!$this->canTouch($player, $block)){
+      if($this->c["Messages"]["Touch"]["Enable"]){
+        $player->sendMessage(str_replace("{block}", $block->getName(), $this->c["Messages"]["Touch"]["Message"]));
+      }
+      $event->setCancelled();
+    }
+  }
+  
+  /**
+   * @param EntityExplodeEvent $event
+   *
+   * @return void
+   */
+  public function onEntityExplode(EntityExplodeEvent $event){
+    $entity = $event->getEntity(); //primed tnt is counted as an entity.
+    $position = $event->getPosition();
+    if(!$this->canExplode($position, $entity->getLevel())){
+      $event->setCancelled();
+    }
+  }
+  
+  /**
+   * Checks if given player can edit area
+   *
+   * @param Player $player
+   * @param Block $block
+   *
+   * @return bool
+   */
+  public function canEdit(Player $player, Block $block) : bool{
+    if($player->hasPermission("iprotector") || $player->hasPermission("iprotector.access")){
+      return true;
+    }
+    $o = true;
+    $g = (isset($this->levels[$block->getLevel()->getName()]) ? $this->levels[$block->getLevel()->getName()]["Edit"] : $this->edit);
+    if ($g){
+      $o = false;
+    }
+    foreach($this->areas as $area){
+      if($area->contains(new Vector3($block->getX(), $block->getY(), $block->getZ()), $block->getLevel()->getName())){
+        if($area->getFlag("edit")){
+          $o = false;
+        }
+        if($area->isWhitelisted(strtolower($player->getName()))){
+          $o = true;
+          break;
+        }
+        if(!$area->getFlag("edit") && $g){
+          $o = true;
+          break;
+        }
+      }
+    }
+  return $o;
+  }
