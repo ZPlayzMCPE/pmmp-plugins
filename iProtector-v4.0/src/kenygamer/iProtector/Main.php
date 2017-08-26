@@ -138,4 +138,49 @@ class Main extends PluginBase implements Listener{
                   $this->pos2[$n]->getY(),
                   $this->pos2[$n]->getZ()
                   ], $sender->getLevel()->getName(), [
-                  $n], $this];
+                  $n], $this);
+                $this->saveAreas();
+                unset($this->pos1[$n]);
+                unset($this->pos2[$n]);
+                $o = $this->getPrefix().TF::GREEN." Area created!";
+              }else{
+                $o = $this->getPrefix().TF::RED." An area with that name already exists.";
+              }
+            }else{
+              $o = $this->getPrefix().TF::RED." Please select both positions first.";
+            }
+          }else{
+            $o = $this->getPrefix().TF::RED." Please specify a name for this area.";
+          }
+        }else{
+          $o = $this->getPrefix().TF::RED." You do not have permission to use this subcommand.";
+        }
+        break;
+      case "here":
+        if($sender->hasPermission("iprotector") || $sender->hasPermission("iprotector.command") || $sender->hasPermission("iprotector.command.area") || $sender->hasPermission("iprotector.command.area.here")){
+          $contains = false;
+          foreach($this->areas as $area){
+            if($area->contains(new Vector3($sender->getX(), $sender->getY(), $sender->getZ()), $sender->getLevel()->getName())){
+              $contains = true;
+              $o = $this->getPrefix().TF::GREEN." You are standing on area ".$area->getName().".\n".TF::GRAY."pos1:\n".TF::GOLD."X: ".TF::BLUE.$area->getPos1()[0]."\n".TF::GOLD."Y: ".TF::BLUE.$area->getPos1()[1]."\n".TF::GOLD."Z: ".TF::BLUE.$area->getPos2()[2]."\n".TF::GRAY."pos2:\n".TF::GOLD."X: ".TF::BLUE.$area->getPos2()[0]."\n".TF::GOLD."Y: ".TF::BLUE.$area->getPos2()[1]."\n".TF::GOLD."Z: ".TF::BLUE.$area->getPos2()[2];
+            }
+          }
+          if(!$contains){
+            $o = $this->getPrefix().TF::RED." You are not standing in any area.";
+          }
+        }else{
+          $o = $this->getPrefix().TF::RED." You do not have permission to use this subcommand.";
+        }
+        break;
+      case "list":
+        if($sender->hasPermission("iprotector") || $sender->hasPermission("iprotector.command") || $sender->hasPermission("iprotector.command.area") || $sender->hasPermission("iprotector.command.area.list")){
+          $o = $this->getPrefix().TF::AQUA." Areas:".TF::GOLD;
+          foreach($this->areas as $area){
+            $o = $o." ".$area->getName().";";
+          }
+        }else{
+          $o = $this->getPrefix().TF::RED." You do not have permission to use this subcommand.";
+        }
+        break;
+      case "flag":
+        ...
