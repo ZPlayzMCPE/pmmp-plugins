@@ -302,3 +302,56 @@ class Main extends PluginBase implements Listener{
     $sender->sendMessage($o);
     return true;
   }
+  
+  /**
+   * @param EntityDamageEvent
+   *
+   * @return void
+   */
+  public function onHurt(EntityDamageEvent $event){
+    if($player = $event->getEntity() instanceof Player){
+      if(!$this->canGetHurt($player)){
+        if($this->c["Messages"]["Hurt"]["Enable"]){
+          $player->sendMessage(str_replace("{player}", $player->getName(), $this->c["Messages"]["Hurt"]["Message"]));
+        }
+        $event->setCancelled();
+      }
+    }
+  }
+  
+  /**
+   * @param BlockBreakEvent $event
+   *
+   * @return void
+   */
+  public function onBlockBreak(BlockBreakEvent $event){
+    $player = $event->getPlayer();
+    $block = $event->getBlock();
+    $n = strtolower($player->getName());
+    if(isset($this->sel1[$n])){
+      unset($this->sel1[$n]);
+      $this->pos1[$n] = new Vector3($block->getX(), $block->getY(), $block->getZ());
+      $player->sendMessage($this->getPrefix().TF::GREEN." Position 1 set to: (".$this->pos1[$n]->getX().", ".$this->pos1[$n]->getY().", ".$this->pos1[$n]->getZ().")");
+      $event->setCancelled();
+    }elseif(isset($this->sel2[$n])){
+      unset($this->sel2[$n]);
+      $this->pos2[$n] = new Vector3($block->getX(), $block->getY(), $block->getZ());
+      $player->sendMessage($this->getPrefix().TF::GREEN." Position 2 set to: (".$this->pos2[$n]->getX().", ".$this->pos2[$n]->getY().", ".$this->pos2[$n]->getZ().")");
+      $event->setCancelled();
+    }else{
+      if(!$this->canEdit($player, $block)){
+        if($this->c["Messages"]["Break"]["Enable"]){
+          $player->sendMessage(str_replace("{block}", $block->getName(), $this->c["Messages"]["Break"]["Enable"]));
+        }
+        $event->setCancelled();
+      }
+    }
+  }
+  
+  /**
+   * @param BlockPlaceEvent $event
+   *
+   * @return bool
+   */
+  public function onBlockPlace(BlockPlaceEvent $event){
+    
