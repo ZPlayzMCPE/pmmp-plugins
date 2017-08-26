@@ -21,6 +21,7 @@ use pocketmine\block\Block;
 use pocketmine\command\{Command, CommandSender, CommandExecutor};
 use pocketmine\event\block\{BlockBreakEvent, BlockPlaceEvent};
 use pocketmine\event\entity\{EntityDamageEvent, EntityExplodeEvent};
+use pocketmine\event\player\PlayerInteractEvent;
 use pocketmine\event\Listener;
 use pocketmine\level\{Level, Position};
 use pocketmine\math\Vector3;
