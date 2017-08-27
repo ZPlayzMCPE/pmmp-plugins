@@ -10,7 +10,7 @@
     "version": "1.2",
     "release_time": 1503360000,
     "features": [
-      "Added event: kenygamer\ChatLogger\event\PlayerChatLogEvent",
+      "Added event: PlayerChatLogEvent",
       "Full rewrite, probably even slightly faster"
       ]
   }
