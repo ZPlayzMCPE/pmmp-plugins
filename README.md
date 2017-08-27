@@ -1,4 +1,6 @@
 # pmmp-plugins
+[![Average time to resolve an issue](http://isitmaintained.com/badge/resolution/kenygamer/pmmp-plugins.svg)](http://isitmaintained.com/project/kenygamer/pmmp-plugins "Average time to resolve an issue")
+![Total downloads](https://img.shields.io/github/downloads/kenygamer/pmmp-plugins/total.svg)
 ![License](https://img.shields.io/badge/license-GNU%20GPLv3-blue.svg)
 > The new home of my PocketMine-MP plugins.
 
