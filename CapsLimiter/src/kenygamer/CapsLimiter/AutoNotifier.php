@@ -1,6 +1,6 @@
 <?php
 
-namespace kenygamer\ChatLogger;
+namespace kenygamer\CapsLimiter;
 
 use pocketmine\utils\Utils;
 
