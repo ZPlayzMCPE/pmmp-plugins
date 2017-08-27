@@ -1,6 +1,4 @@
 # ChatLogger
-[![Average time to resolve an issue](http://isitmaintained.com/badge/resolution/kenygamer/pmmp-plugins.svg)](http://isitmaintained.com/project/kenygamer/pmmp-plugins "Average time to resolve an issue")
-![Total downloads](https://img.shields.io/github/downloads/kenygamer/pmmp-plugins/total.svg)
 
 ChatLogger is a PocketMine-MP plugin that logs your server chat and allows you to access messages with ease later. You can create reports to get messages from a specific player on a given date.
 
