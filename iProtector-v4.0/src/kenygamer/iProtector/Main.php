@@ -23,8 +23,10 @@ use pocketmine\event\block\{BlockBreakEvent, BlockPlaceEvent};
 use pocketmine\event\entity\{EntityDamageEvent, EntityExplodeEvent};
 use pocketmine\event\player\PlayerInteractEvent;
 use pocketmine\event\Listener;
+use pocketmine\event\server\DataPacketReceiveEvent;
 use pocketmine\level\{Level, Position};
 use pocketmine\math\Vector3;
+use pocketmine\network\protocol\ItemFrameDropItemPacket;
 use pocketmine\Player;
 use pocketmine\plugin\PluginBase;
 use pocketmine\utils\TextFormat as TF;
@@ -411,6 +413,21 @@ class Main extends PluginBase implements Listener{
   }
   
   /**
+   * @param DataPacketReceiveEvent $event
+   *
+   * @return void
+   */
+  public function onItemFrameDropPacket(DataPacketReceiveEvent $event){
+    $packet = $event->getPacket();
+    if($packet instanceof ItemFrameDropItemPacket){
+      $player = $event->getPlayer();
+      if(!$this->canDropItemFrame($player, new Vector3($packet->x, $packet->y, $packet->z))){
+        $event->setCancelled();
+      }
+    }
+  }
+  
+  /**
    * Checks if given player can edit area
    *
    * @param Player $player
@@ -464,6 +481,41 @@ class Main extends PluginBase implements Listener{
     }
     foreach($this->areas as $area){
       if($area->contains(new Vector3($block->getX(), $block->getY(), $block->getZ()), $block->getLevel()->getName())){
+        if($area->getFlag("touch")){
+          $o = false;
+        }
+        if($area->isWhitelisted(strtolower($player->getName()))){
+          $o = true;
+          break;
+        }
+        if(!$area->getFlag("edit") && $g){
+          $o = true;
+          break;
+        }
+      }
+    }
+  return $o;
+  }
+  
+  /**
+   * Checks if given player can drop item frame
+   *
+   * @param Player $player
+   * @param Vector3 $position
+   *
+   * @return bool
+   */
+  public function canDropItemFrame(Player $player, Vector3 $position){
+    if($player->hasPermission("iprotector") || $player->hasPermission("iprotector.access")){
+      return true;
+    }
+    $o = true;
+    $g = (isset($this->levels[$player->getLevel()->getName()]) ? $this->levels[$player->getLevel()->getName()]["Touch"] : $this->touch);
+    if ($g){
+      $o = false;
+    }
+    foreach($this->areas as $area){
+      if($area->contains($position, $player->getLevel()->getName())){
         if($area->getFlag("touch")){
           $o = false;
         }
