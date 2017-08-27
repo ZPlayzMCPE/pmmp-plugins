@@ -1,4 +1,5 @@
 # ChatLogger
+![Release](https://img.shields.io/badge/release-v1.2-blue.svg)
 
 ChatLogger is a PocketMine-MP plugin that logs your server chat and allows you to access messages with ease later. You can create reports to get messages from a specific player on a given date.
 
