@@ -30,6 +30,8 @@ class Main extends PluginBase implements Listener{
   
   const BYPASS_PERMISSION = "chatlogger.bypass";
   
+  const VERSION = "1.2";
+  
   /** @var bool */
   private $debug = false;
   
