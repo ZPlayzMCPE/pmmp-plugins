@@ -33,6 +33,8 @@ use pocketmine\utils\TextFormat as TF;
 
 class Main extends PluginBase implements Listener{
   
+  const VERSION = "4.0.3";
+  
   /** @var array */
   private $c;
   
