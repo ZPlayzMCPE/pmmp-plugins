@@ -30,6 +30,7 @@ class Main extends PluginBase implements Listener{
   
   const BYPASS_PERMISSION = "chatlogger.bypass";
   
+  const NAME = "ChatLogger";
   const VERSION = "1.2";
   
   /** @var bool */
@@ -40,6 +41,7 @@ class Main extends PluginBase implements Listener{
    */
   public function onEnable(){
     $this->getLogger()->info(TF::GREEN."Enabling ".$this->getDescription()->getFullName()."...");
+    new AutoNotifier($this, self::NAME, self::VERSION);
     $this->loadConfig();
     @mkdir($this->getDataFolder()."data");
     @mkdir($this->getDataFolder()."data/log");
