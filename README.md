@@ -1,34 +1,53 @@
 # pmmp-plugins
 [![Average time to resolve an issue](http://isitmaintained.com/badge/resolution/kenygamer/pmmp-plugins.svg)](http://isitmaintained.com/project/kenygamer/pmmp-plugins "Average time to resolve an issue")
-![Total downloads](https://img.shields.io/github/downloads/kenygamer/pmmp-plugins/total.svg)
 ![License](https://img.shields.io/badge/license-GNU%20GPLv3-blue.svg)
+
+![Fork](https://img.shields.io/github/stars/kenygamer/pmmp-plugins.svg?style=social&label=Fork)
+![Star](https://img.shields.io/github/stars/kenygamer/pmmp-plugins.svg?style=social&label=Star)
+![Watch](https://img.shields.io/github/stars/kenygamer/pmmp-plugins.svg?style=social&label=Watch)
+
 > The new home of my PocketMine-MP plugins.
 
 ## Plugins
-- [**CapsLimiter**](https://github.com/kenygamer/pmmp-plugins/blob/master/CapsLimiter)
-- [**ChatLogger**](https://github.com/kenygamer/pmmp-plugins/blob/master/ChatLogger)
-- [**Coords**](https://github.com/kenygamer/pmmp-plugins/blob/master/Coords)
-- [**HideMe**](https://github.com/kenygamer/pmmp-plugins/blob/master/HideMe)
-- [**iProtector-v4.0**](https://github.com/kenygamer/pmmp-plugins/blob/master/iProtector-v4.0)
-- [**KillCommands**](https://github.com/kenygamer/pmmp-plugins/blob/master/KillCommands)
-- [**KillMoney**](https://github.com/kenygamer/pmmp-plugins/blob/master/KillMoney)
-- [**ServerRules**](https://github.com/kenygamer/pmmp-plugins/blob/master/ServerRules)
-- [**VModifier**](https://github.com/kenygamer/pmmp-plugins/blob/master/VModifier)
+* [**CapsLimiter**](https://github.com/kenygamer/pmmp-plugins/blob/master/CapsLimiter)
+* [**ChatLogger**](https://github.com/kenygamer/pmmp-plugins/blob/master/ChatLogger)
+* [**Coords**](https://github.com/kenygamer/pmmp-plugins/blob/master/Coords)
+* [**HideMe**](https://github.com/kenygamer/pmmp-plugins/blob/master/HideMe)
+* [**iProtector-v4.0**](https://github.com/kenygamer/pmmp-plugins/blob/master/iProtector-v4.0)
+* [**KillCommands**](https://github.com/kenygamer/pmmp-plugins/blob/master/KillCommands)
+* [**KillMoney**](https://github.com/kenygamer/pmmp-plugins/blob/master/KillMoney)
+* [**ServerRules**](https://github.com/kenygamer/pmmp-plugins/blob/master/ServerRules)
+* [**VModifier**](https://github.com/kenygamer/pmmp-plugins/blob/master/VModifier)
 
-## Download
-Follow the steps below to download any plugin:
-### Step 1.
-Navigate to [here](https://kenygamer.herokuapp.com/download-plugin.php) to download the plugin in ZIP format.
-### Step 2.
-Create an executable PHAR file in [PocketMine Tools](https://pmt.mcpe.fun/pages/zip2phar/) by uploading the previously downloaded file.
-### Step 3.
-Upload the plugin to the *plugins/* folder on your server.
-### Step 4.
-Restart your server and you're ready!
+## How can I follow along/contribute?
+Contributions and donations are greatly appreciated. If you like this repository, do not forget to give me a hand!
+
+- [Star this repository](https://github.com/kenygamer/pmmp-plugins/stargazers). It's free
+- [Submit pull requests](https://github.com/kenygamer/pmmp-plugins/pulls) to contribute code.
+- [Donate](https://www.paypal.me/SurvivalTimePE) to my PayPal.
 
 ## Issues
-Did you find a bug or issue running a plugin on your server? No problem! Here's what to do:
-1. Check the [Issue Tracker](https://github.com/kenygamer/pmmp-plugins/issues), in case your issue has already been reported.
-1. If your issue is still valid, submit the issue in the Issue Tracker. Please be sure to provide as much information as you can. This will make the process of reproducing and fixing easier.
+Got an issue running a plugin? [Submit an issue](https://github.com/kenygamer/pmmp-plugins/issues) and I'll be happy to help. Make sure it is not a duplicate by checking the **Issue Tracker** and following the [issue template](https://github.com/kenygamer/pmmp-plugins/blob/master/.github/ISSUE_TEMPLATE.md) or it will be instantly closed.
+
+**There are some cases where your issue will be closed without prior explanation:**
+- The issue does not follow the **issue template** or is incomplete.
+- The issue is irrelevant to a plugin listed on the `kenygamer/pmmp-plugins` repository.
+- The issue ocurrs in non-official PocketMine installations (forks).
+
+## Installation
+Get the plugin of your choice for your PocketMine-MP server for **free**. Follow the tutorial that best suits you.
+
+### Running a plugin from source
+1. Get the zip of your plugin [here](https://kenygamer.herokuapp.com/download-plugin.php).
+1. Make a new folder in the `plugins/` directory called `PluginName`.
+1. Upload the compressed file to this folder.
+1. Unzip the file. For terminal, use `unzip unknown.zip`.
+1. Restart your PocketMine server.
+
+### Running a plugin as phar
+1. Get the zip of your plugin [here](https://kenygamer.herokuapp.com/download-plugin.php).
+1. Use [this](https://pmt.mcpe.fun/pages/zip2phar/) tool to get the phar.
+1. Upload the phar on the `plugins/` directory.
+1. Restart your PocketMine server.
 
 ## Upgrading plugins
