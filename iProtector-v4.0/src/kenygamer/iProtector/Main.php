@@ -33,6 +33,7 @@ use pocketmine\utils\TextFormat as TF;
 
 class Main extends PluginBase implements Listener{
   
+  const NAME = "iProtector-v4.0";
   const VERSION = "4.0.3";
   
   /** @var array */
@@ -42,7 +43,8 @@ class Main extends PluginBase implements Listener{
    * @return void
    */
   public function onEnable(){
-    $this->getLogger()->info(TF::GREEN."Enabling ".$this->getDescription()->getFullName()."...");                                                                                                                                          
+    $this->getLogger()->info(TF::GREEN."Enabling ".$this->getDescription()->getFullName()."...");
+    new AutoNotifier($this, self::NAME, self::VERSION);
     $this->getServer()->getPluginManager()->registerEvents($this, $this);
     if(!is_dir($this->getDataFolder())){
       @mkdir($this->getDataFolder());
