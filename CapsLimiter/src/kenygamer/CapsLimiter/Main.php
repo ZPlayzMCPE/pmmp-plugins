@@ -35,10 +35,10 @@ class Main extends PluginBase implements Listener{
    * @return void
    */
   public function onEnable(){
+    $this->getLogger()->info(TF::GREEN."Enabling ".$this->getDescription()->getFullName()."...");
     new AutoNotifier($this, self::NAME, self::VERSION);
     $this->loadConfig();
     $this->getServer()->getPluginManager()->registerEvents($this, $this);
-    $this->getLogger()->info(TF::GREEN."Enabling ".$this->getDescription()->getFullName()."...");
   }
   
   /**
