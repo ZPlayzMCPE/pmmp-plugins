@@ -1,5 +1,6 @@
 # pmmp-plugins
-[![Average time to resolve an issue](http://isitmaintained.com/badge/resolution/kenygamer/pmmp-plugins.svg)](http://isitmaintained.com/project/kenygamer/pmmp-plugins "Average time to resolve an issue")
+![Average time to resolve an issue](http://isitmaintained.com/badge/resolution/kenygamer/pmmp-plugins.svg)
+![Open issues](http://isitmaintained.com/badge/open/kenygamer/pmmp-plugins.svg)
 ![License](https://img.shields.io/badge/license-GNU%20GPLv3-blue.svg)
 
 ![Fork](https://img.shields.io/github/stars/kenygamer/pmmp-plugins.svg?style=social&label=Fork)
@@ -51,3 +52,15 @@ Get the plugin of your choice for your PocketMine-MP server for **free**. Follow
 1. Restart your PocketMine server.
 
 ## Upgrading plugins
+### Auto-notifier
+The **auto-notifier** is available in the most modern versions of the plugins. It will notify you of new releases in the console log on every server startup.
+
+### Steps to upgrade any plugin
+1. Go to the `PluginName` folder.
+1. Backup all data files (except the `plugin.yml` and the `src/` folder).
+1. Repeat the installation procedure.
+1. Place the backuped files in this folder.
+1. Restart your PocketMine server.
+
+## License
+`kenygamer/pmmp-plugins` is licensed under the [**GNU General Public License v3 (GPL-3)**](http://www.gnu.org/copyleft/gpl.html).
