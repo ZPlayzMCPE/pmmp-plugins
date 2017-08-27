@@ -25,6 +25,7 @@ use pocketmine\utils\TextFormat as TF;
 
 class Main extends PluginBase implements Listener{
   
+  const NAME = "CapsLimiter";
   const VERSION = "1.2";
   
   /** @var int */
@@ -34,6 +35,7 @@ class Main extends PluginBase implements Listener{
    * @return void
    */
   public function onEnable(){
+    new AutoNotifier($this, self::NAME, self::VERSION);
     $this->loadConfig();
     $this->getServer()->getPluginManager()->registerEvents($this, $this);
     $this->getLogger()->info(TF::GREEN."Enabling ".$this->getDescription()->getFullName()."...");
