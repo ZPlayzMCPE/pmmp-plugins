@@ -3,15 +3,15 @@
     "version": "1.0",
     "release_time": 1498003200,
     "features": [
-      "Keep track of your server chat messages"
+      "Keep track of your server chat messages."
       ]
   },
   {
     "version": "1.2",
     "release_time": 1503360000,
     "features": [
-      "Added event: PlayerChatLogEvent",
-      "Full rewrite, probably even slightly faster"
+      "Added event: PlayerChatLogEvent.",
+      "Full rewrite, probably even slightly faster."
       ]
   }
 ]
