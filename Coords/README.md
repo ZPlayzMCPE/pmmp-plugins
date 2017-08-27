@@ -1,4 +1,5 @@
 # Coords
+![Release](https://img.shields.io/badge/release-v3.1-blue.svg)
 
 Coords is a plugin for PocketMine-MP that allows you to get your coordinates (multi-world support) in a single command. This plugin features the ability to see the coordinates of other online players and even choose a custom format.
 
