@@ -1,4 +1,5 @@
 # iProtector-v4.0
+![Release](https://img.shields.io/badge/release-v4.0.3-blue.svg)
 
 iProtector-v4.0 is a PocketMine-MP plugin that allows you to protect areas (includes but is not limited to prevent block breaking and placing). Feel free to switch these settings according to your needs.
 
