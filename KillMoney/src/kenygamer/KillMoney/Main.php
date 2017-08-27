@@ -78,3 +78,4 @@ class Main extends PluginBase implements Listener{
           $this->getLogger()->error("Couldn't give money: non-numeric value(s) found in config");
           return;
         }
+        
