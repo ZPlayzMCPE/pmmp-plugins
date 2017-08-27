@@ -1,1 +1,26 @@
-[]
+[
+  {
+    "version": "4.0",
+    "release_time": 1498262400,
+    "features": [
+      "Availability to enable or disable the plugin from the config.",
+      "Enable or disable pretty printing for areas; if you handle several areas, you may be thinking of disabling this flag.",
+      "Protect your areas of TNT and Creeper explosions with the tnt flag.",
+      "Send automated messages during certain events (for example, when you break a block, supposing is protected)."
+      ]
+  },
+  {
+    "version": "4.0.1",
+    "release_time": 1498262400,
+    "features": [
+      "See in which area you are standing with /area here."
+      ]
+  },
+  {
+    "version": "4.0.3",
+    "release_time": 1503792000,
+    "features": [
+      "Item frame protection in areas with the edit flag (default)."
+      ]
+  }
+]
