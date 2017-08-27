@@ -26,6 +26,8 @@ use pocketmine\utils\TextFormat as TF;
 
 class Main extends PluginBase implements Listener{
   
+  const VERSION = "1.2";
+  
   /** @var array */
   private $nametags = [];
   
