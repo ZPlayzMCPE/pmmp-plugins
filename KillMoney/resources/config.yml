@@ -1,1 +1,38 @@
+# Configuration file for KillMoney by Kevin Andrews;
 
+# Settings:
+
+# Choose whether enable or disable this plugin
+enable-plugin: true
+
+# The amount of money the killer will be rewarded with
+killer-money: 100
+
+# Take money from the victim?
+# true = Enable
+# false = Disable
+victim-take-money: false
+# If true, how much?
+victim-money: 100
+# Would you like to set a minimum amount of money that the victim must have for it to lose money?
+# Set to 0 to disable
+victim-minimum-money: 1000
+
+# Messages:
+
+# Would you like to enable event messages?
+enable-messages: true
+
+# Tags:
+ # %KILLER%
+ # %VICTIM%
+ # %MONEY%
+
+# Message received by the killer
+killer-message: 'You have stolen %MONEY%$ from %VICTIM%!'
+
+# Message received by the victim
+victim-message: 'You have lost %MONEY%$ for being killed by %KILLER%'
+
+# Message received by the killer
+no-reward-message: '%VICTIM% has no money to steal'
