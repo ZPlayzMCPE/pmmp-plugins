@@ -347,7 +347,7 @@ class Main extends PluginBase implements Listener{
     }else{
       if(!$this->canEdit($player, $block)){
         if($this->c["Messages"]["Break"]["Enable"]){
-          $player->sendMessage(str_replace("{block}", $block->getName(), $this->c["Messages"]["Break"]["Enable"]));
+          $player->sendMessage(str_replace("{block}", $block->getName(), $this->c["Messages"]["Break"]["Message"]));
         }
         $event->setCancelled();
       }
@@ -376,7 +376,7 @@ class Main extends PluginBase implements Listener{
     }else{
       if(!$this->canEdit($player, $block)){
         if($this->c["Messages"]["Place"]["Enable"]){
-          $player->sendMessage(str_replace("{block}", $block->getName(), $this->c["Messages"]["Place"]["Enable"]));
+          $player->sendMessage(str_replace("{block}", $block->getName(), $this->c["Messages"]["Place"]["Message"]));
         }
         $event->setCancelled();
       }
