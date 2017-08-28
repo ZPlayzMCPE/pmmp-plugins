@@ -89,20 +89,12 @@ class Main extends PluginBase implements Listener{
         $victimMoney = $this->getConfig()->get("victim-money");
         $victimMinimumMoney = $this->getConfig()->get("victim-minimum-money");
         $enableMessages = (bool) $this->getConfig()->get("enable-messages");
-        if(!is_numeric($killerMoney) || !is_numeric($victimTakeMoney) || !is_numeric($victimMoney) || !is_numeric($victimMinimumMoney)){
+        if(!is_numeric($killerMoney) || !is_numeric($victimMoney) || !is_numeric($victimMinimumMoney)){
           $this->getLogger()->error("Couldn't give money: non-numeric value(s) found in config");
           return;
         }
         $economyAPI = $this->getServer()->getPluginManager()->getPlugin("EconomyAPI");
-        //this is confusing
-        if($victimTakeMoney && $victim->hasPermission("killmoney.victim.lose.money")){
-          if($economyAPI->myMoney($player->getName()) < $victimMoney){
-            if($enableMessages){
-              $killer->sendMessage($this->translate([$killer->getName(), $player->getName(), 0], $this->getConfig()->get("no-reward-message")));
-            }
-          }else{
-            if($enableMessages){
-              $killer->sendMessage($this->translate($killer
-              $victim->sendMessage($this->translate([$killer->getName(), $player->getName(), $victimMoney], $this->getConfig()->get("victim-message")));
-            }
-          }
+        if($victimTakeMoney && $player->hasPermission("killmoney.victim.lose.money")){
+          if(!$economyAPI->myMoney($player->getName()) < $victimMinimumMoney){
+            $economyAPI->reduceMoney($player->getName(), $victimMoney);
+            $player->sendMessage(translate
