@@ -8,12 +8,12 @@ KillMoney is a PocketMine-MP plugin that allows you to give your players the opp
 ## Commands
 | Command | Usage | Description |
 | ------- | ----- | ----------- |
-| `/killmoney` | `/killmoney` | Prints out detailed information and configuration values. |
+| `/killmoney` | `/killmoney` | Prints out information about this KillMoney installation. |
 
 ## Permissions
 ```yaml
 killmoney.command:
- default: op
+ default: true
 killmoney.killer.receive.money:
  default: true
 killmoney.victim.lose.money:
