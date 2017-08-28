@@ -1,1 +1,44 @@
-[]
+[
+  {
+    "version": "1.0",
+    "release_time": 1497312000,
+    "features": [
+      "Bringing back the original KillMoney plugin for PocketMine-MP servers.",
+      "Permission nodes to get money by killing other players.",
+      "Send messages to the killer/victim (tags are on the config).",
+      "The victim also loses money.",
+      "/killmoney command for quick view of config."
+      ]
+  },
+  {
+    "version": "1.0.1",
+    "release_time": 1497657600,
+    "features": [
+      "General bug fixing."
+      ]
+  },
+  {
+    "version": "1.1",
+    "release_time": 1498348800,
+    "features": [
+      "Fixed bug: victim-message not showing."
+      ]
+  },
+  {
+    "version": "1.1.2",
+    "release_time": 1498435200,
+    "features": [
+      "Fixed issue with the configuration file.",
+      "KillMoney permissions by default."
+      ]
+  },
+  {
+    "version": "1.1.3",
+    "release_time": 1503942360,
+    "features": [
+      "Full rewrite.",
+      "Fixed issue \"Enable plugin is set to false\"",
+      "Configuration file updated. REQUIRES old config.yml deletion."
+      ]
+  }
+]
