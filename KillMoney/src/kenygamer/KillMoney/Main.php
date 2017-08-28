@@ -32,6 +32,12 @@ class Main extends PluginBase implements Listener{
   const NAME = "KillMoney";
   const VERSION = "1.1.3";
   
+  const KILLER_PERMISSION = "killmoney.killer.receive.money";
+  const VICTIM_PERMISSION = "killmoney.victim.lose.money";
+  
+  /** @var array */
+  private $config = [];
+  
   /**
    * @return void
    */
@@ -73,28 +79,58 @@ class Main extends PluginBase implements Listener{
       $this->saveDefaultConfig();
     }
   }
-   
+  
+  /**
+   * Returns a string with its tags translated
+   *
+   * @param array $values
+   * @param string $message
+   *
+   * @return string
+   */
+  private function translate(array $values, string $message) : string{
+    $tags = [
+      "%KILLER%",
+      "%VICTIM%",
+      "%MONEY%"
+      ];
+    return str_replace($tags, $values, $message);
+  }
+  
   /**
    * @param PlayerDeathEvent $event
    *
    * @return void
    */
   public function onPlayerDeath(PlayerDeathEvent $event){
-    $player = $event->getPlayer();
-    if($player->getLastDamageCause() instanceof EntityDamageByEntityEvent){
-      if($player->getLastDamageCause()->getDamager() instanceof Player){
-        $killer = $player->getLastDamageCause()->getDamager();
-        $killerMoney = $this->getConfig()->get("killer-money");
-        $victimTakeMoney = (bool) $this->getConfig()->get("victim-take-money");
-        $victimMoney = $this->getConfig()->get("victim-money");
-        $victimMinimumMoney = $this->getConfig()->get("victim-minimum-money");
-        $enableMessages = (bool) $this->getConfig()->get("enable-messages");
-        if(!is_numeric($killerMoney) || !is_numeric($victimMoney) || !is_numeric($victimMinimumMoney)){
-          $this->getLogger()->error("Couldn't give money: non-numeric value(s) found in config");
-          return;
-        }
+    $victim = $event->getPlayer();
+    if($victim->getLastDamageCause() instanceof EntityDamageByEntityEvent){
+      if($victim->getLastDamageCause()->getDamager() instanceof Player){
+        $killer = $victim->getLastDamageCause()->getDamager();
+        // Configuration values
+        $km = (int) $this->getConfig()->get("killer-money");
+        $vtm = (bool) $this->getConfig()->get("victim-take-money");
+        $vm = (int) $this->getConfig()->get("victim-money");
+        $vmm = (int) $this->getConfig()->get("victim-minimum-money");
+        $em = (bool) $this->getConfig()->get("enable-messages");
+        //
         $economyAPI = $this->getServer()->getPluginManager()->getPlugin("EconomyAPI");
-        if($victimTakeMoney && $player->hasPermission("killmoney.victim.lose.money")){
-          if(!$economyAPI->myMoney($player->getName()) < $victimMinimumMoney){
-            $economyAPI->reduceMoney($player->getName(), $victimMoney);
-            $player->sendMessage(translate
+        if($killer->hasPermission(self::KILLER_PERMISSION)){
+          $economyAPI->addMoney($killer->getName(), $km);
+          if($em){
+            $killer->sendMessage($this->translate[$killer->getName(), $victim->getName(), $km], (string) $this->getConfig()->get("killer-message")));
+          }
+        }
+        if($vtm && $victim->hasPermission(self::VICTIM_PERMISSION)){
+          if(!$economyAPI->myMoney($victim->getName()) < $vmm){
+            $economyAPI->reduceMoney($victim->getName(), $vm);
+            if($em){
+              $victim->sendMessage($this->translate([$killer->getName(), $victim->getName(), $vm], (string) $this->getConfig()->get("victim-message")));
+            }
+          }
+        }
+      }
+    }
+  }
+  
+}
