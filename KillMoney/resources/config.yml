@@ -3,14 +3,14 @@
 # Settings:
 
 # Choose whether enable or disable this plugin
+# true = Enable
+# false = Disable
 enable-plugin: true
 
 # The amount of money the killer will be rewarded with
 killer-money: 100
 
 # Take money from the victim?
-# true = Enable
-# false = Disable
 victim-take-money: false
 # If true, how much?
 victim-money: 100
@@ -29,10 +29,7 @@ enable-messages: true
  # %MONEY%
 
 # Message received by the killer
-killer-message: 'You have stolen %MONEY%$ from %VICTIM%!'
+killer-message: "You have stolen %MONEY%$ from %VICTIM%!"
 
 # Message received by the victim
-victim-message: 'You have lost %MONEY%$ for being killed by %KILLER%'
-
-# Message received by the killer
-no-reward-message: '%VICTIM% has no money to steal'
+victim-message: "You have lost %MONEY%$ for being killed by %KILLER%"
