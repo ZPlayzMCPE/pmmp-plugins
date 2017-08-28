@@ -35,8 +35,8 @@ class Main extends PluginBase implements Listener{
   const KILLER_PERMISSION = "killmoney.killer.receive.money";
   const VICTIM_PERMISSION = "killmoney.victim.lose.money";
   
-  /** @var array */
-  private $config = [];
+  /** @var EconomyAPI */
+  private $economyAPI;
   
   /**
    * @return void
@@ -51,7 +51,8 @@ class Main extends PluginBase implements Listener{
       $this->getPluginLoader()->disablePlugin($this);
       return;
     }
-    if(!is_dir($this->getServer()->getDataPath()."plugins/EconomyAPI")){
+    $this->economyAPI = $this->getServer()->getPluginManager()->getPlugin("EconomyAPI");
+    if(!$this->economyAPI instanceof EconomyAPI && !$this->economyAPI->isEnabled()){
       $this->getLogger()->warning("Disabling plugin, EconomyAPI dependency not found");
       $this->getPluginLoader()->disablePlugin($this);
       return;
@@ -114,16 +115,15 @@ class Main extends PluginBase implements Listener{
         $vmm = (int) $this->getConfig()->get("victim-minimum-money");
         $em = (bool) $this->getConfig()->get("enable-messages");
         //
-        $economyAPI = $this->getServer()->getPluginManager()->getPlugin("EconomyAPI");
         if($killer->hasPermission(self::KILLER_PERMISSION)){
-          $economyAPI->addMoney($killer->getName(), $km);
+          $this->economyAPI->addMoney($killer->getName(), $km);
           if($em){
             $killer->sendMessage($this->translate[$killer->getName(), $victim->getName(), $km], (string) $this->getConfig()->get("killer-message")));
           }
         }
         if($vtm && $victim->hasPermission(self::VICTIM_PERMISSION)){
-          if(!$economyAPI->myMoney($victim->getName()) < $vmm){
-            $economyAPI->reduceMoney($victim->getName(), $vm);
+          if(!$this->economyAPI->myMoney($victim->getName()) < $vmm){
+            $this->economyAPI->reduceMoney($victim->getName(), $vm);
             if($em){
               $victim->sendMessage($this->translate([$killer->getName(), $victim->getName(), $vm], (string) $this->getConfig()->get("victim-message")));
             }
