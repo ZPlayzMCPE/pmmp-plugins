@@ -73,9 +73,7 @@ class Main extends PluginBase implements Listener{
       $this->saveDefaultConfig();
     }
   }
-  
-  /**
-  
+   
   /**
    * @param PlayerDeathEvent $event
    *
