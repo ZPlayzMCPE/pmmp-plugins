@@ -8,7 +8,6 @@ website: https://github.com/kenygamer/pmmp-plugins/blob/master/KillMoney
 
 commands:
  killmoney:
-  default: true
 
 permissions:
  killmoney.command:
