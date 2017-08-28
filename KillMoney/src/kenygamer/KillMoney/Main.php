@@ -135,7 +135,7 @@ class Main extends PluginBase implements Listener{
   
   public function onCommand(CommandSender $sender, Command $command, string $label, array $args) : bool{
     if($command->getName() === "killmoney"){
-      if(!$sender instanceof Player || $sender->hasPermission("killmoney.command")){
+      if($sender->hasPermission("killmoney.command")){
         $sender->sendMessage(TF::GREEN."[KillMoney]".TF::GOLD." This server is running ".TF::GREEN.$this->getDescription()->getFullName()."\n".TF::AQUA."Author: @XxKenyGamerxX\nLink: github.com/kenygamer/pmmp-plugins");
         return true;
       }
