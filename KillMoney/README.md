@@ -17,5 +17,5 @@ killmoney.command:
 killmoney.killer.receive.money:
  default: true
 killmoney.victim.lose.money:
- default: true
+ default: false
 ```
