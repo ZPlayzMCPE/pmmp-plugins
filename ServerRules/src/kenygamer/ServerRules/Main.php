@@ -83,3 +83,12 @@ class Main extends PluginBase implements Listener{
         $sender->sendMessage($this->getPrefix().TF::RED."You do not have permission to use this command.");
         return true;
       }
+      if(!is_array($rules = $this->getConfig()->get("rules"))){
+        $this->getLogger()->error("Unable to execute command: invalid value for rules in config.yml");
+        return true;
+      }
+      if($rulesPage = (int) $this->getConfig()->get("rules-page") < 1)){
+        $this->getLogger()->warning("Rules per page in config.yml is less than 1. Resetting to 1");
+        $this->getConfig()->set("rules-page", 1);
+        $this->getConfig()->save();
+      }
