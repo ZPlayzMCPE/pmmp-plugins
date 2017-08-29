@@ -1,1 +1,14 @@
+name: ServerRules
+main: kenygamer\ServerRules\Main
+version: 2.0
+api: 3.0.0-ALPHA7
 
+author: kenygamer
+website: https://github.com/kenygamer/pmmp-plugins/blob/master/ServerRules
+
+commands:
+ rules:
+ 
+permissions:
+ rules.command:
+  default: true
