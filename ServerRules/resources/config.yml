@@ -1,1 +1,10 @@
+# Configuration file for ServerRules by Kevin Andrews;
 
+# Rules
+# List your server rules below
+# Feel free to list as many rules as you like, following the format:
+#- "Sample Rule"
+rules:
+ - "Rule 1"
+ - "Rule 2"
+ - "Rule 3"
