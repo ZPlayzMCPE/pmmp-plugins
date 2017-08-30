@@ -29,8 +29,10 @@ use pocketmine\utils\TextFormat as TF;
 
 class Main extends PluginBase implements Listener{
   
-  const NAME = "KillMoney";
-  const VERSION = "1.1.3";
+  /** Plugin name */
+  const PLUGIN_NAME = "KillMoney";
+  /** Plugin version */
+  const PLUGIN_VERSION = "1.1.3";
   
   const KILLER_PERMISSION = "killmoney.killer.receive.money";
   const VICTIM_PERMISSION = "killmoney.victim.lose.money";
@@ -43,7 +45,7 @@ class Main extends PluginBase implements Listener{
    */
   public function onEnable(){
     $this->getLogger()->info(TF::GREEN."Enabling ".$this->getDescription()->getFullName()."...");
-    new AutoNotifier($this, self::NAME, self::VERSION);
+    new AutoNotifier($this);
     $this->loadConfig();
     $enable = (bool) $this->getConfig()->get("enable-plugin");
     if(!$enable){
