@@ -26,8 +26,10 @@ use pocketmine\utils\TextFormat as TF;
 
 class Main extends PluginBase implements Listener{
   
-  const NAME = "HideMe";
-  const VERSION = "1.2";
+  /** Plugin name */
+  const PLUGIN_NAME = "HideMe";
+  /** Plugin version */
+  const PLUGIN_VERSION = "1.2";
   
   /** @var array */
   private $nametags = [];
@@ -37,7 +39,7 @@ class Main extends PluginBase implements Listener{
    */
   public function onEnable(){
     $this->getLogger()->info(TF::GREEN."Enabling ".$this->getDescription()->getFullName()."...");
-    new AutoNotifier($this, self::NAME, self::VERSION);
+    new AutoNotifier($this);
     $this->getServer()->getPluginManager()->registerEvents($this, $this);
   }
   
