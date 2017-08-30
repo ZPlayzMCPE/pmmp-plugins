@@ -27,8 +27,10 @@ use kenygamer\Coords\Coordinates;
 
 class Main extends PluginBase implements Listener{
   
-  const NAME = "Coords";
-  const VERSION = "3.1";
+  /** Plugin name */
+  const PLUGIN_NAME = "Coords";
+  /** Plugin version */
+  const PLUGIN_VERSION = "3.1";
   
   /** @var string */
   private $format;
@@ -38,7 +40,7 @@ class Main extends PluginBase implements Listener{
    */
   public function onEnable(){
     $this->getLogger()->info(TF::GREEN."Enabling ".$this->getDescription()->getFullName()."...");
-    new AutoNotifier($this, self::NAME, self::VERSION);
+    new AutoNotifier($this);
     $this->loadConfig();
     $this->getServer()->getPluginManager()->registerEvents($this, $this);
   }
