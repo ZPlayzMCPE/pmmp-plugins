@@ -89,7 +89,7 @@ class Main extends PluginBase implements Listener{
         $this->getLogger()->error("Unable to execute command: invalid value for rules in config.yml");
         return true;
       }
-      if($pageRules = (int) $this->getConfig()->get("page-rules") < 1)){
+      if($pageRules = (int) $this->getConfig()->get("page-rules") < 1){
         $this->getLogger()->warning("Rules per page in config.yml is less than 1. Resetting to 1");
         $this->getConfig()->set("page-rules", 1);
         $this->getConfig()->save();
