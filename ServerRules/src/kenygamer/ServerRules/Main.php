@@ -99,7 +99,7 @@ class Main extends PluginBase implements Listener{
       $totalRules = count($rules);
       $totalPages = ceil($totalRules / $pageRules);
       $currPageRules = array_splice($rules, $offset, $pageRules);
-      if($page < $totalPages || $page > $totalPages){
+      if($page < 1 || $page > $totalPages){
         $sender->sendMessage($this->getPrefix().TF::RED." Page not found. Please use /rules for a list of rules.");
         return true;
       }
