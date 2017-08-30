@@ -18,9 +18,9 @@ class AutoNotifier{
   
   public function __construct($plugin){
     $this->plugin = $plugin;
-    $this->name = $plugin::NAME;
-    $this->version = $plugin::VERSION;
-    $releases = Utils::getURL("https://raw.githubusercontent.com/kenygamer/pmmp-plugins/master/$name/releases.json");
+    $this->name = $plugin::PLUGIN_NAME;
+    $this->version = $plugin::PLUGIN_VERSION;
+    $releases = Utils::getURL("https://raw.githubusercontent.com/kenygamer/pmmp-plugins/master/".$plugin::PLUGIN_NAME."/releases.json");
     if($releases === false){
       $plugin->getLogger()->error("[AutoNotifier] Host raw.githubusercontent.com timed out");
       return;
