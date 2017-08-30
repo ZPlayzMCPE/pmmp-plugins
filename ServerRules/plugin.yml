@@ -8,7 +8,9 @@ website: https://github.com/kenygamer/pmmp-plugins/blob/master/ServerRules
 
 commands:
  rules:
- 
+  description: Shows your server rules.
+  usage: /rules [page]
+  
 permissions:
  rules.command:
   default: true
