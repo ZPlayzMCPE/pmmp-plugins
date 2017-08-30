@@ -8,3 +8,6 @@ rules:
  - "Rule 1"
  - "Rule 2"
  - "Rule 3"
+
+# How many rules to show per page?
+page-rules: 5
