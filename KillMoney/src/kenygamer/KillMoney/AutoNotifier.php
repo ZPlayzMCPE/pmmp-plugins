@@ -1,6 +1,6 @@
 <?php
 
-namespace kenygamer\ServerRules;
+namespace kenygamer\KillMoney;
 
 use pocketmine\utils\TextFormat as TF;
 use pocketmine\utils\Utils;
