@@ -8,7 +8,9 @@ website: https://github.com/kenygamer/pmmp-plugins/blob/master/KillMoney
 
 commands:
  killmoney:
-
+  description: Prints out information about this KillMoney installation.
+  usage: /killmoney
+  
 permissions:
  killmoney.command:
   default: true
