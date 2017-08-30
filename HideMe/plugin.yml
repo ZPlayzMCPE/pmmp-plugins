@@ -8,9 +8,13 @@ website: https://github.com/kenygamer/pmmp-plugins/blob/master/HideMe
 
 commands:
  hide:
+  description: Hides or modifies your nametag temporalily.
   permission: hideme.commands
+  usage: /hide [nametag]
  unhide:
+  description: Unhides/fixes your nametag.
   permission: hideme.commands
+  usage: /unhide
   
 permissions:
  hideme.commands:
