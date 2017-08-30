@@ -8,7 +8,9 @@ website: https://github.com/kenygamer/pmmp-plugins/blob/master/CapsLimiter
 
 commands:
  limit:
+  description: Sets the capital letters limit.
   permission: capslimiter.command
+  usage: /limit <value>
 
 permissions:
  capslimiter.command:
