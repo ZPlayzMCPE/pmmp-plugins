@@ -1,38 +1,35 @@
 <?php
 
-namespace kenygamer\KillMoney;
+namespace kenygamer\ServerRules;
 
+use pocketmine\utils\TextFormat as TF;
 use pocketmine\utils\Utils;
 
 class AutoNotifier{
   
-  /** @var Main */
   private $plugin;
-  /** @var string */
-  private $name;
-  /** @var string */
-  private $version;
+  /**
+   * @var string $name Plugin name
+   * @var string $version Plugin version
+   */
+  private $name, $version;
   /** @var array */
   private $releases;
   
-  public function __construct(Main $plugin, string $name, string $version){
+  public function __construct($plugin){
     $this->plugin = $plugin;
-    $this->name = $name;
-    $this->version = $version;
-    $releases = Utils::getURL("https://raw.githubusercontent.com/kenygamer/pmmp-plugins/master/".$name."/releases.json");
+    $this->name = $plugin::PLUGIN_NAME;
+    $this->version = $plugin::PLUGIN_VERSION;
+    $releases = Utils::getURL("https://raw.githubusercontent.com/kenygamer/pmmp-plugins/master/".$plugin::PLUGIN_NAME."/releases.json");
     if($releases === false){
-      $plugin->getLogger()->error("[AutoNotifier] Plugin not found");
+      $plugin->getLogger()->error("[AutoNotifier] Host raw.githubusercontent.com timed out");
       return;
     }
-    $releases = json_decode($releases, true);
+    $this->releases = json_decode($releases, true);
     if(json_last_error() !== JSON_ERROR_NONE){
-      $plugin->getLogger()->error("[AutoNotifier] An error occurred while parsing plugin releases");
+      $plugin->getLogger()->error("[AutoNotifier] Host raw.githubusercontent.com returned an invalid response");
       return;
     }
-    foreach($releases as $release){
-      $releases[] = $release;
-    }
-    $this->releases = $releases;
     $this->check();
   }
   
@@ -42,17 +39,17 @@ class AutoNotifier{
    * @return void
    */
   private function check(){
+    $this->plugin->getLogger()->info("[AutoNotifier] You are running $this->name v$this->version");
     if(!$this->isOutdated()){
-      $this->plugin->getLogger()->warning("[AutoNotifier] ".$this->name." is up to date");
+      $this->plugin->getLogger()->info("[AutoNotifier] You are up-to-date");
       return;
     }
     $last = end($this->releases);
-    $this->plugin->getLogger()->warning("[AutoNotifier] There's a new version of ".$this->name." available (v".$last["version"].")");
-    $this->plugin->getLogger()->warning("Features:");
+    $this->plugin->getLogger()->warning("[AutoNotifier] A new version (v".$last["version"].") has been released. Consider upgrading $this->name");
+    $this->plugin->getLogger()->info("--- Changelog ---");
     foreach($last["features"] as $feature){
-      $this->plugin->getLogger()->warning("- ".$feature);
+      $this->plugin->getLogger()->info("* ".$feature);
     }
-    $this->plugin->getLogger()->warning("Consider upgrading now: https://kenygamer.com/update-plugin.php");
   }
   
   /**
@@ -61,10 +58,7 @@ class AutoNotifier{
    * @return bool
    */
   private function isOutdated() : bool{
-    if(version_compare($this->version, end($this->releases)["version"]) === -1){
-      return true;
-    }
-    return false;
+    return version_compare($this->version, end($this->releases)["version"]) === -1;
   }
   
 }
