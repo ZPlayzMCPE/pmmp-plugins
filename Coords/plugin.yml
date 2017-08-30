@@ -9,10 +9,16 @@ website: https://github.com/kenygamer/pmmp-plugins/blob/master/Coords
 commands:
  coords:
   default: true
+  description: "Prints out your or other players' coordinates."
+  usage: /coords [player]
  coordtags:
   default: op
+  description: Lists available tags for formatting the /coords message.
+  usage: /coordtags
  coordupdate:
   default: op
+  description: Sets the /coords message.
+  usage: /coordupdate <message>
   
 permissions:
  coords.command.coords:
