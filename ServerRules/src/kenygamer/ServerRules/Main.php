@@ -87,8 +87,25 @@ class Main extends PluginBase implements Listener{
         $this->getLogger()->error("Unable to execute command: invalid value for rules in config.yml");
         return true;
       }
-      if($rulesPage = (int) $this->getConfig()->get("rules-page") < 1)){
+      if($pageRules = (int) $this->getConfig()->get("page-rules") < 1)){
         $this->getLogger()->warning("Rules per page in config.yml is less than 1. Resetting to 1");
-        $this->getConfig()->set("rules-page", 1);
+        $this->getConfig()->set("page-rules", 1);
         $this->getConfig()->save();
+      } 
+      $page = !isset($args[0]) ? 1 : (int) $args[0];
+      $offset = ($page - 1) * $pageRules;
+      $totalRules = count($rules);
+      $totalPages = ceil($totalRules / $pageRules);
+      $currPageRules = array_splice($rules, $offset, $pageRules);
+      if($page < $totalPages || $page > $totalPages){
+        $sender->sendMessage($this->getPrefix().TF::RED." Page not found. Please use /rules for a list of rules.");
+        return true;
       }
+      $sender->sendMessage(TF::WHITE."--- Showing rules page ".$page." of ".$totalPages." (/rules <page>) ---");
+      foreach($currPageRules as $rule){
+        $sender->sendMessage(TF::DARK_GREEN."- ".TF::WHITE.$rule.TF::RESET);
+      }
+    }
+  }
+  
+}
