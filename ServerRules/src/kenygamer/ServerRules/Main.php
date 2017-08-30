@@ -26,15 +26,17 @@ use pocketmine\utils\TextFormat as TF;
 
 class Main extends PluginBase implements Listener{
   
-  const NAME = "ServerRules";
-  const VERSION = "2.0";
+  /** Plugin name */
+  const PLUGIN_NAME = "ServerRules";
+  /** Plugin version */
+  const PLUGIN_VERSION = "2.0";
   
   /**
    * @return void
    */
   public function onEnable(){
     $this->getLogger()->info(TF::GREEN."Enabling ".$this->getDescription()->getFullName()."...");
-    new AutoNotifier($this, self::NAME, self::VERSION);
+    new AutoNotifier(self::PLUGIN_NAME, self::PLUGIN_VERSION, $this);
     $this->loadConfig();
     $this->getServer()->getPluginManager()->registerEvents($this, $this);
   }
