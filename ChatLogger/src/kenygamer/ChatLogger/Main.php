@@ -28,10 +28,12 @@ use kenygamer\ChatLogger\classes\Report;
 
 class Main extends PluginBase implements Listener{
   
-  const BYPASS_PERMISSION = "chatlogger.bypass";
+  /** Plugin name */
+  const PLUGIN_NAME = "ChatLogger";
+  /** Plugin version */
+  const PLUGIN_VERSION = "1.2";
   
-  const NAME = "ChatLogger";
-  const VERSION = "1.2";
+  const BYPASS_PERMISSION = "chatlogger.bypass";
   
   /** @var bool */
   private $debug = false;
@@ -41,7 +43,7 @@ class Main extends PluginBase implements Listener{
    */
   public function onEnable(){
     $this->getLogger()->info(TF::GREEN."Enabling ".$this->getDescription()->getFullName()."...");
-    new AutoNotifier($this, self::NAME, self::VERSION);
+    new AutoNotifier($this);
     $this->loadConfig();
     @mkdir($this->getDataFolder()."data");
     @mkdir($this->getDataFolder()."data/log");
