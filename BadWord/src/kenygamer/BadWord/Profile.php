@@ -18,3 +18,63 @@
 namespace kenygamer\BadWord;
 
 class Profile{
+  
+  /** @var string */
+  private $name;
+  /** @var array */
+  private $words;
+  
+  public function __construct(string $name, array $words){
+    $this->name = $name;
+    $this->words = $words;
+  }
+  
+  /**
+   * Returns profile name
+   *
+   * @return string
+   */
+  public function getName() : string{
+    return $this->name;
+  }
+  
+  /**
+   * Returns profile words
+   *
+   * @param bool $all If false return only approved words
+   *
+   * @return array
+   */
+  public function getWords($all = true) : array{
+    if($all){
+      return $this->words;
+    }
+    foreach($this->words as $word){
+      if($word[1]){
+        $words[] = $word;
+      }
+    }
+    return $words;
+  }
+  
+  /**
+   * Removes all profile words
+   *
+   * @return void
+   */
+  public function unsetWords(){
+    $this->words = [];
+  }
+  
+  /**
+   * Adds a word to profile
+   *
+   * @param string $word
+   *
+   * @return void
+   */
+  public function setWord(string $word){
+    $this->words[] = $word;
+  }
+  
+}
