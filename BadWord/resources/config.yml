@@ -1,1 +1,17 @@
+# Configuration file for BadWord by Kevin Andrews;
 
+# Settings:
+
+# Enable anti-spam feature? 
+# true = Enable
+# false = Disable
+anti-spam: true
+# If true, how many words can a player submit until they are reviewed?
+max-words: 1
+
+# Award the player if his bad word suggestion was accepted?
+award-player: true
+# If true, enter commands to execute below
+award-player-commands:
+ - "say %PLAYER% suggested a word to be added to the chat filter and earned 100$"
+ - "givemoney %PLAYER% 100"
