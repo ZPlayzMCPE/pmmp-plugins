@@ -85,11 +85,17 @@ class Main extends PluginBase implements Listener{
       case "/ver":
         $message = (string) $this->getConfig()->get("messages")["ver"];
         break;
+      case "/about":
+        $message = (string) $this->getConfig()->get("messages")["about"];
+        break;
       case "/pocketmine:version":
         $message = (string) $this->getConfig()->get("messages")["version"];
         break;
       case "/pocketmine:ver":
         $message = (string) $this->getConfig()->get("messages")["ver"];
+        break;
+      case "/pocketmine:about":
+        $message = (string) $this->getConfig()->get("messages")["about"];
         break;
       default:
         $message = self::MSG_NONE;
