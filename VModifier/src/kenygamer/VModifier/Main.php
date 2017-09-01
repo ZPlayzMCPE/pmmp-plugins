@@ -85,11 +85,18 @@ class Main extends PluginBase implements Listener{
       case "/ver":
         $message = (string) $this->getConfig()->get("messages")["ver"];
         break;
+      case "/pocketmine:version":
+        $message = (string) $this->getConfig()->get("messages")["version"];
+        break;
+      case "/pocketmine:ver":
+        $message = (string) $this->getConfig()->get("messages")["ver"];
+        break;
       default:
         $message = self::MSG_NONE;
     }
     if($message !== self::MSG_NONE){
       $player->sendMessage($message);
+      $event->setCancelled(true);
     }
   }
   
