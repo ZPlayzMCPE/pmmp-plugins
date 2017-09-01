@@ -1,1 +1,18 @@
-[]
+[
+  {
+    "version": "1.0",
+    "release_time": 1497312000,
+    "features": [
+      "Replace /version output easily with a message of your liking.",
+      "Go to your configuration file for setting up."
+      ]
+  },
+  {
+    "version": "2.0",
+    "release_time": 1504215180,
+    "features": [
+      "Added two commands: /ver and /about. Commands /pocketmine:<command> are supported as well.",
+      "Configuration file updated. REQUIRES old config.yml deletion."
+      ]
+  }
+]
