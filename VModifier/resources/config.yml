@@ -1,1 +1,20 @@
+# Configuration file for VModifier by Kevin Andrews;
 
+# Settings:
+
+# Choose whether enable or disable this plugin
+# true = Enable
+# false = Disable
+enable-plugin: true
+
+# Messages:
+messages:
+
+# Tags:
+ # \n = Line break
+ 
+ # /version
+ version: "This is the message will be shown when using /version."
+ 
+ # /ver
+ ver: "This is the message will be shown when using /ver."
