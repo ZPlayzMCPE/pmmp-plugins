@@ -37,6 +37,13 @@ class Main extends PluginBase implements Listener{
   public function onEnable(){
     $this->getLogger()->info(TF::GREEN."Enabling ".$this->getDescription()->getFullName()."...");
     new AutoNotifier($this);
+    $this->loadConfig();
+    $enable = (bool) $this->getConfig()->get("enable-plugin");
+    if(!$enable){
+      $this->getLogger()->info(TF::RED."Disabling plugin, enable-plugin is set to false");
+      $this->getPluginLoader()->disablePlugin($this);
+      return;
+    }
     $this->getServer()->getPluginManager()->registerEvents($this, $this);
   }
   
@@ -47,6 +54,25 @@ class Main extends PluginBase implements Listener{
     $this->getLogger()->info(TF::RED."Disabling ".$this->getDescription()->getFullName()."...");
   }
   
+  /**
+   * Loads configuration file
+   *
+   * @return void
+   */
+  private function loadConfig(){
+    if(!is_dir($this->getDataFolder())){
+      @mkdir($this->getDataFolder());
+    }
+    if(!file_exists($this->getDataFolder()."config.yml")){
+      $this->saveDefaultConfig();
+    }
+  }
+  
+  /**
+   * @param PlayerCommandPreprocessEvent $event
+   *
+   * @return void
+   */
   public function onPlayerCommandPreprocess(PlayerCommandPreprocessEvent $event){
     $player = $event->getPlayer();
     $command = explode(" ", strtolower($event->getMessage()));
