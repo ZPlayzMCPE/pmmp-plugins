@@ -10,12 +10,12 @@
 > The new home of my PocketMine-MP plugins.
 
 ## Plugins
+* [**BadWord**](https://github.com/kenygamer/pmmp-plugins/blob/master/BadWord)
 * [**CapsLimiter**](https://github.com/kenygamer/pmmp-plugins/blob/master/CapsLimiter)
 * [**ChatLogger**](https://github.com/kenygamer/pmmp-plugins/blob/master/ChatLogger)
 * [**Coords**](https://github.com/kenygamer/pmmp-plugins/blob/master/Coords)
 * [**HideMe**](https://github.com/kenygamer/pmmp-plugins/blob/master/HideMe)
 * [**iProtector-v4.0**](https://github.com/kenygamer/pmmp-plugins/blob/master/iProtector-v4.0)
-* [**KillCommands**](https://github.com/kenygamer/pmmp-plugins/blob/master/KillCommands)
 * [**KillMoney**](https://github.com/kenygamer/pmmp-plugins/blob/master/KillMoney)
 * [**ServerRules**](https://github.com/kenygamer/pmmp-plugins/blob/master/ServerRules)
 * [**VModifier**](https://github.com/kenygamer/pmmp-plugins/blob/master/VModifier)
