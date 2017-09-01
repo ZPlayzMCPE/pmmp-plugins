@@ -1,4 +1,5 @@
 <?php
+
 /*
  * VModifier plugin for PocketMine-MP
  * Copyright (C) 2017 Kevin Andrews <https://github.com/kenygamer/pmmp-plugins/blob/master/V>
@@ -14,7 +15,7 @@
  * GNU General Public License for more details.
 */
 
-namespace VModifier;
+namespace kenygamer\VModifier;
 
 use pocketmine\command\{Command, CommandSender, CommandExecutor};
 use pocketmine\event\Listener;
