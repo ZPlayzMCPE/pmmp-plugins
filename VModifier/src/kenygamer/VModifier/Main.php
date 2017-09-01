@@ -19,6 +19,7 @@ namespace kenygamer\VModifier;
 
 use pocketmine\command\{Command, CommandSender, CommandExecutor};
 use pocketmine\event\Listener;
+use pocketmine\event\player\PlayerCommandPreprocessEvent;
 use pocketmine\plugin\PluginBase;
 use pocketmine\utils\Config;
 use pocketmine\utils\TextFormat as TF;
