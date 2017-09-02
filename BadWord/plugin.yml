@@ -1,1 +1,26 @@
+name: BadWord
+main: kenygamer\BadWord\Main
+version: 1.0
+api: 3.0.0-ALPHA7
 
+author: kenygamer
+website: https://github.com/kenygamer/pmmp-plugins/blob/master/BadWord
+
+commands:
+ badword:
+  description: Suggest a word to be added to the chat filter.
+  usage: "/badword <word>"
+ bw:
+  description: Alias of /badword.
+  usage: "/bw <word>"
+ bwadmin:
+  description: Admin commands for BadWord.
+  usage: "/badword <approve|list>"
+ 
+permissions:
+ badword.command:
+  description: "Allows you to use /badword."
+  default: true
+ badword.admin.command:
+  description: "Allows you to use /bwadmin."
+  default: op
