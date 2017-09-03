@@ -58,7 +58,7 @@ class Main extends PluginBase implements Listener{
    */
   public function onDisable(){
     $this->getLogger()->info(TF::RED."Disabling ".$this->getDescription()->getFullName()."...");
-    $this->saveProfiles();
+    //$this->saveProfiles();
   }
   
   /**
@@ -128,7 +128,12 @@ class Main extends PluginBase implements Listener{
           $ap = (bool) $this->getConfig()->get("award-player");
           $apc = (array) $this->getConfig()->get("award-player-commands");
           //
-          if(!isset($this->profiles[strtolower($sender->getName())])){
+          $e = false;
+          foreach($this->profiles as $profile){
+            if($profile->getName() === strtolower($sender->getName())){
+              $e = true;
+            }
+          if(!$e){
             $this->profiles[strtolower($sender->getName())] = new Profile($sender->getName(), []);
             $this->saveProfiles();
           }
