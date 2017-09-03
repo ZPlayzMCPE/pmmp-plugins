@@ -33,7 +33,7 @@ class Main extends PluginBase implements Listener{
   /** Plugin version */
   const PLUGIN_VERSION = "1.0";
   
-  /** @var Profile[] */
+  /** @var Profiles[] */
   private $profiles = [];
   
   /**
@@ -58,7 +58,7 @@ class Main extends PluginBase implements Listener{
    */
   public function onDisable(){
     $this->getLogger()->info(TF::RED."Disabling ".$this->getDescription()->getFullName()."...");
-    //$this->saveProfiles();
+    $this->saveProfiles();
   }
   
   /**
@@ -85,7 +85,7 @@ class Main extends PluginBase implements Listener{
   }
   
   /**
-   * Saves profiles to file
+   * Saves profiles to file path
    *
    * @return void
    */
@@ -128,13 +128,13 @@ class Main extends PluginBase implements Listener{
           $ap = (bool) $this->getConfig()->get("award-player");
           $apc = (array) $this->getConfig()->get("award-player-commands");
           //
-          $e = false;
+          $exists = false;
           foreach($this->profiles as $profile){
             if($profile->getName() === strtolower($sender->getName())){
-              $e = true;
+              $exists = true;
             }
           }
-          if(!$e){
+          if(!$exists){
             $this->profiles[strtolower($sender->getName())] = new Profile($sender->getName(), []);
             $this->saveProfiles();
           }
@@ -183,15 +183,15 @@ class Main extends PluginBase implements Listener{
               $sender->sendMessage("Usage: /bwadmin approve <word>");
               return true;
             }
-            $a = false;
+            $exists = false;
             foreach($this->profiles as $profile){
               foreach(($words = $profile->getWords()) as $word){
-                if($word[0] === $word){
-                  $a = true;
+                if($word[0] === $args[1]){
+                  $exists = true;
                   $name = $profile->getName();
                   $profile->unsetWords();
                   foreach($words as $word){
-                    if($word[0] === $args[2]){
+                    if($word[0] === $args[1] && !$word[1]){
                       $word[1] = true;
                     }
                     $profile->setWord($word);
@@ -200,7 +200,7 @@ class Main extends PluginBase implements Listener{
               }
             }
             if(!$a){
-              $sender->sendMessage($this->getPrefix().TF::RED." Word not found. Please make sure it is case sensitive.");
+              $sender->sendMessage($this->getPrefix().TF::RED." Word not found or already approved. Please make sure it is case sensitive.");
               return true;
             }
             $this->saveProfiles();
@@ -209,11 +209,9 @@ class Main extends PluginBase implements Listener{
             break;
           case "list":
             $sender->sendMessage(TF::WHITE."--- Word List ---");
-            $sender->sendMessage(TF::WHITE."Word - Approved");
             foreach($this->profiles as $profile){
               foreach($profile->getWords(false) as $word){
-                $status = ($word[1]) ? TF::GREEN."true" : TF::RED."false";
-                $sender->sendMessage(TF::DARK_GREEN."- ".TF::WHITE.$word[0].TF::AQUA." => ".$status.TF::RESET);
+                $sender->sendMessage(TF::DARK_GREEN."- ".TF::WHITE.$word[0].TF::RESET);
               }
             }
             return true;
