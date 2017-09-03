@@ -58,9 +58,7 @@ class Main extends PluginBase implements Listener{
    */
   public function onDisable(){
     $this->getLogger()->info(TF::RED."Disabling ".$this->getDescription()->getFullName()."...");
-    if(!$this->saveProfiles()){
-      $this->getLogger()->critical("Failed to save profiles");
-    }
+    $this->saveProfiles();
   }
   
   /**
@@ -89,7 +87,7 @@ class Main extends PluginBase implements Listener{
   /**
    * Saves profiles to file
    *
-   * @return bool
+   * @return void
    */
   private function saveProfiles(){
     foreach($this->profiles as $profile){
@@ -99,9 +97,8 @@ class Main extends PluginBase implements Listener{
         ];
     }
     if(file_put_contents($this->getDataFolder()."profiles.json", json_encode($profiles, JSON_PRETTY_PRINT)) === false){
-      return false;
+      $this->getLogger()->critical("Failed to save profiles");
     }
-    return true;
   }
   
   /**
@@ -133,6 +130,7 @@ class Main extends PluginBase implements Listener{
           //
           if(!isset($this->profiles[strtolower($sender->getName())])){
             $this->profiles[strtolower($sender->getName())] = new Profile($sender->getName(), []);
+            $this->saveProfiles();
           }
           $profile = $this->profiles[strtolower($sender->getName())];
           if($as && count($profile->getWords(false)) > $mw){
@@ -147,11 +145,13 @@ class Main extends PluginBase implements Listener{
               }
             }
           }
-          array_push($words = $profile->getWords(), [$args[0], false]);
+          $words = $profile->getWords();
+          array_push($words, [$args[0], false]);
           $profile->unsetWords();
           foreach($words as $word){
             $profile->setWord($word);
           }
+          $this->saveProfiles();
           $sender->sendMessage($this->getPrefix().TF::GREEN." Thanks for your suggestion!");
           return true;
         }
@@ -179,13 +179,13 @@ class Main extends PluginBase implements Listener{
             }
             $a = false;
             foreach($this->profiles as $profile){
-              foreach($words = $profile->getWords() as $word){
+              foreach(($words = $profile->getWords()) as $word){
                 if($word[0] === $word){
                   $a = true;
                   $name = $profile->getName();
                   $profile->unsetWords();
                   foreach($words as $word){
-                    if($word[0] === $word){
+                    if($word[0] === $args[2]){
                       $word[1] = true;
                     }
                     $profile->setWord($word);
@@ -197,6 +197,7 @@ class Main extends PluginBase implements Listener{
               $sender->sendMessage($this->getPrefix().TF::RED." Word not found. Please make sure it is case sensitive.");
               return true;
             }
+            $this->saveProfiles();
             $sender->sendMessage($this->getPrefix().TF::GREEN." ".$name."'s word successfully approved.");
             return true;
             break;
@@ -205,7 +206,7 @@ class Main extends PluginBase implements Listener{
             $sender->sendMessage(TF::WHITE."Word - Approved");
             foreach($this->profiles as $profile){
               foreach($profile->getWords(false) as $word){
-                $status = $word[1] ? TF::GREEN."true" : TF::RED."false";
+                $status = ($word[1]) ? TF::GREEN."true" : TF::RED."false";
                 $sender->sendMessage(TF::DARK_GREEN."- ".TF::WHITE.$word[0].TF::AQUA." => ".$status.TF::RESET);
               }
             }
