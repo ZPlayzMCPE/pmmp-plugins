@@ -49,6 +49,7 @@ class Profile{
     if($all){
       return $this->words;
     }
+    $words = [];
     foreach($this->words as $word){
       if($word[1]){
         $words[] = $word;
