@@ -58,7 +58,7 @@ class Main extends PluginBase implements Listener{
    */
   public function onDisable(){
     $this->getLogger()->info(TF::RED."Disabling ".$this->getDescription()->getFullName()."...");
-    $this->saveProfiles();
+    //$this->saveProfiles();
   }
   
   /**
@@ -109,7 +109,7 @@ class Main extends PluginBase implements Listener{
    *
    * @return bool
    */
-  public function onCommand(CommandSender $sender, Command $command, string $label, array $args) : bool{
+  public function onCommand(CommandSender $sender, Command $command, $label, array $args){
     switch(strtolower($command->getName())){
       case "badword":
       case "bw":
@@ -145,14 +145,14 @@ class Main extends PluginBase implements Listener{
           }
           foreach($this->profiles as $profile){
             foreach($profile->getWords() as $word){
-              if($word[0] === $args[0]){
+              if(strtolower($word[0]) === strtolower($args[0])){
                 $sender->sendMessage($this->getPrefix().TF::RED." Looks like this word is already added.");
                 return true;
               }
             }
           }
           $words = $profile->getWords();
-          array_push($words, [$args[0], false]);
+          array_push($words, [strtolower($args[0]), false]);
           $profile->unsetWords();
           foreach($words as $word){
             $profile->setWord($word);
@@ -186,12 +186,12 @@ class Main extends PluginBase implements Listener{
             $exists = false;
             foreach($this->profiles as $profile){
               foreach(($words = $profile->getWords()) as $word){
-                if($word[0] === $args[1]){
+                if(strtolower($word[0]) === strtolower($args[1])){
                   $exists = true;
                   $name = $profile->getName();
                   $profile->unsetWords();
                   foreach($words as $word){
-                    if($word[0] === $args[1] && !$word[1]){
+                    if(strtolower($word[0]) === strtolower($args[1]) and !$word[1]){
                       $word[1] = true;
                     }
                     $profile->setWord($word);
@@ -199,7 +199,7 @@ class Main extends PluginBase implements Listener{
                 }
               }
             }
-            if(!$a){
+            if(!$exists){
               $sender->sendMessage($this->getPrefix().TF::RED." Word not found or already approved. Please make sure it is case sensitive.");
               return true;
             }
