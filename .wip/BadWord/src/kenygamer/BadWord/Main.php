@@ -133,6 +133,7 @@ class Main extends PluginBase implements Listener{
             if($profile->getName() === strtolower($sender->getName())){
               $e = true;
             }
+          }
           if(!$e){
             $this->profiles[strtolower($sender->getName())] = new Profile($sender->getName(), []);
             $this->saveProfiles();
