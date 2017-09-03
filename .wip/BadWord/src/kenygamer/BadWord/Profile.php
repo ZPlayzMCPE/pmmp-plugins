@@ -54,7 +54,7 @@ class Profile{
         $words[] = $word;
       }
     }
-    return $words;
+    return (array) $words;
   }
   
   /**
