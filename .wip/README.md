@@ -3,6 +3,6 @@ List of plugins that are still under development and are not ready to run on pro
 
 ## Plugins
 
-| Name | Phase |
+| Name | Development phase |
 | ---- | ----------------- |
-| [**BadWord**](https://github.com/kenygamer/pmmp-plugins/blob/master/.wip/BadWord) | *Alpha* |
+| [**BadWord**](https://github.com/kenygamer/pmmp-plugins/blob/master/.wip/BadWord) | *Pre-alpha* |
