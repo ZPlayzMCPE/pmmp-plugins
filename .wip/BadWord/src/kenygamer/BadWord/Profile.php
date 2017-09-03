@@ -74,7 +74,7 @@ class Profile{
    *
    * @return void
    */
-  public function setWord(string $word){
+  public function setWord(array $word){
     $this->words[] = $word;
   }
   
