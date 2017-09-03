@@ -1,8 +1,7 @@
 # BadWord
 ![Release](https://img.shields.io/badge/release-v1.0-blue.svg)
 
-BadWord is a PocketMine-MP plugin that
-...
+BadWord is a PocketMine-MP plugin that allows your players to contribute to a clean chat by suggesting words that should be added to the chat filter. OPS can quickly approve words and even reward your players.
 
 ## Commands
 | Command | Usage | Description | 
