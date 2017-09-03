@@ -45,7 +45,7 @@ class Profile{
    *
    * @return array
    */
-  public function getWords($all = true) : array{
+  public function getWords(bool $all = true) : array{
     if($all){
       return $this->words;
     }
