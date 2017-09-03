@@ -10,7 +10,6 @@
 > The new home of my PocketMine-MP plugins.
 
 ## Plugins
-* [**BadWord**](https://github.com/kenygamer/pmmp-plugins/blob/master/BadWord)
 * [**CapsLimiter**](https://github.com/kenygamer/pmmp-plugins/blob/master/CapsLimiter)
 * [**ChatLogger**](https://github.com/kenygamer/pmmp-plugins/blob/master/ChatLogger)
 * [**Coords**](https://github.com/kenygamer/pmmp-plugins/blob/master/Coords)
