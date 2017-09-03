@@ -30,7 +30,7 @@ class Profile{
   }
   
   /**
-   * Returns profile name
+   * Returns the profile name
    *
    * @return string
    */
@@ -39,7 +39,7 @@ class Profile{
   }
   
   /**
-   * Returns profile words
+   * Returns all profile words
    *
    * @param bool $all If false return only approved words
    *
@@ -59,7 +59,7 @@ class Profile{
   }
   
   /**
-   * Removes all profile words
+   * Unsets all profile words
    *
    * @return void
    */
@@ -68,7 +68,7 @@ class Profile{
   }
   
   /**
-   * Adds a word to profile
+   * Push a word to profile
    *
    * @param string $word
    *
