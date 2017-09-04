@@ -39,7 +39,7 @@ Get the plugin of your choice for your PocketMine-MP server for **free**. Follow
 
 ### Running a plugin from source
 1. Get the zip of your plugin [here](https://kenygamer.herokuapp.com/download-plugin.php).
-1. Make a new folder in the `plugins/` directory called `PluginName`.
+<!-- 1. Make a new folder in the `plugins/` directory called `PluginName`. -->
 1. Upload the compressed file to this folder.
 1. Unzip the file. For terminal, use `unzip unknown.zip`.
 1. Restart your PocketMine server.
