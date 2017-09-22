@@ -1,7 +1,9 @@
 name: iProtector
 main: kenygamer\iProtector\Main
 version: 4.0.3#3.1b
-api: 3.0.0-ALPHA7
+api:
+ - 3.0.0-ALPHA7
+ - 3.0.0-ALPHA8
 
 author: kenygamer
 website: https://github.com/kenygamer/pmmp-plugins/blob/master/iProtector-v4.0
