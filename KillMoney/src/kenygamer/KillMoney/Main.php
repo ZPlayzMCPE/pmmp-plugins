@@ -120,7 +120,7 @@ class Main extends PluginBase implements Listener{
         if($killer->hasPermission(self::KILLER_PERMISSION)){
           $this->economyAPI->addMoney($killer->getName(), $km);
           if($em){
-            $killer->sendMessage($this->translate[$killer->getName(), $victim->getName(), $km], (string) $this->getConfig()->get("killer-message")));
+            $killer->sendMessage($this->translate([$killer->getName(), $victim->getName(), $km], (string) $this->getConfig()->get("killer-message")));
           }
         }
         if($vtm && $victim->hasPermission(self::VICTIM_PERMISSION)){
