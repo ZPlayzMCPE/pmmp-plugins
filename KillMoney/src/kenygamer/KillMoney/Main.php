@@ -54,7 +54,7 @@ class Main extends PluginBase implements Listener{
       return;
     }
     $this->economyAPI = $this->getServer()->getPluginManager()->getPlugin("EconomyAPI");
-    if(!$this->economyAPI instanceof EconomyAPI && !$this->economyAPI->isEnabled()){
+    if(!$this->economyAPI instanceof onebone\economyapi\EconomyAPI && !$this->economyAPI->isEnabled()){
       $this->getLogger()->warning("Disabling plugin, EconomyAPI dependency not found");
       $this->getPluginLoader()->disablePlugin($this);
       return;
