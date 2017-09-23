@@ -40,5 +40,12 @@
       "Fixed issue \"Enable plugin is set to false\"",
       "Configuration file updated. REQUIRES old config.yml deletion."
       ]
+  },
+  {
+    "version": "1.1.5",
+    "release_time": 1506184080,
+    "features": [
+      "Fixes: server is not able to startup due to missing dependency."
+      ]
   }
 ]
