@@ -55,7 +55,7 @@ class Main extends PluginBase implements Listener{
    *
    * @return void
    */
-  private function loadConfig(){
+  public function loadConfig(){
     $this->saveDefaultConfig();
     $this->maxcaps = $this->getConfig()->get("max-caps");
   }
