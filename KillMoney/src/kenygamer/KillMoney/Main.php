@@ -32,7 +32,7 @@ class Main extends PluginBase implements Listener{
   /** Plugin name */
   const PLUGIN_NAME = "KillMoney";
   /** Plugin version */
-  const PLUGIN_VERSION = "1.1.3";
+  const PLUGIN_VERSION = "1.1.5";
   
   const KILLER_PERMISSION = "killmoney.killer.receive.money";
   const VICTIM_PERMISSION = "killmoney.victim.lose.money";
