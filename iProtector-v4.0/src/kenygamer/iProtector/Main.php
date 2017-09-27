@@ -26,7 +26,7 @@ use pocketmine\event\Listener;
 use pocketmine\event\server\DataPacketReceiveEvent;
 use pocketmine\level\{Level, Position};
 use pocketmine\math\Vector3;
-use pocketmine\network\protocol\ItemFrameDropItemPacket;
+use pocketmine\network\mcpe\protocol\ItemFrameDropItemPacket;
 use pocketmine\Player;
 use pocketmine\plugin\PluginBase;
 use pocketmine\utils\TextFormat as TF;
