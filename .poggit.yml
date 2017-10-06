@@ -1,0 +1,23 @@
+--- # Poggit-CI Manifest. Open the CI at https://poggit.pmmp.io/ci/ZPlayzMCPE/pmmp-plugins
+branches:
+- master
+projects:
+  .wip.BadWord:
+    path: .wip/BadWord/
+  CapsLimiter:
+    path: CapsLimiter/
+  ChatLogger:
+    path: ChatLogger/
+  Coords:
+    path: Coords/
+  HideMe:
+    path: HideMe/
+  KillMoney:
+    path: KillMoney/
+  ServerRules:
+    path: ServerRules/
+  VModifier:
+    path: VModifier/
+  iProtector-v4.0:
+    path: iProtector-v4.0/
+...
